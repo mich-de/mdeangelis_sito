@@ -391,16 +391,7 @@ a:hover {
   overflow: hidden;
 }
 
-.nav-icon {
-  width: 1.5em;
-  height: 1.5em;
-  object-fit: contain;
-  opacity: 0.9;
-  transition: transform var(--transition-base);
-  display: inline-block;
-  /* Ensure it's visible */
-}
-
+/* Merged .nav-icon styles */
 .nav-icon {
   width: 20px;
   height: 20px;
@@ -408,6 +399,13 @@ a:hover {
   opacity: 0.8;
   transition: all 0.3s ease;
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+  display: inline-block;
+}
+
+/* Global Image Safety to prevent huge icons if classes fail */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .nav-link:hover .nav-icon {
