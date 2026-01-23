@@ -1186,13 +1186,15 @@ img {
 .skill-tag {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.4rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 50px;
-  font-size: 0.85rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--color-gray-light);
   transition: all 0.2s ease;
   user-select: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .skill-tag:hover {
@@ -1204,11 +1206,11 @@ img {
 }
 
 .skill-tag-icon {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
   vertical-align: middle;
-  margin-right: 4px;
+  margin-right: 8px;
 }
 
 
