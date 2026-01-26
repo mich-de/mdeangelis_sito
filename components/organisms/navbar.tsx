@@ -17,10 +17,10 @@ export function Navbar() {
     const { t } = useLanguage();
 
     const navItems = [
-        { label: t("nav.home"), href: "#home" },
-        { label: t("nav.about"), href: "#about" },
-        { label: t("nav.interests"), href: "#interests" },
-        { label: t("nav.contact"), href: "#contact" },
+        { label: t("nav.home"), href: "#home", icon: "icon_menu_home.png" },
+        { label: t("nav.about"), href: "#about", icon: "icon_menu_about.png" },
+        { label: t("nav.interests"), href: "#interests", icon: "icon_menu_interests.png" },
+        { label: t("nav.contact"), href: "#contatti", icon: "icon_menu_contact.png" }, // Legacy id is 'contatti'
     ];
 
     return (
@@ -43,8 +43,9 @@ export function Navbar() {
                             <li key={item.href}>
                                 <Link
                                     href={item.href}
-                                    className="text-sm font-medium hover:text-primary transition-colors"
+                                    className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-2"
                                 >
+                                    <img src={`/assets/${item.icon}`} alt="" className="w-5 h-5 object-contain" aria-hidden="true" />
                                     {item.label}
                                 </Link>
                             </li>
