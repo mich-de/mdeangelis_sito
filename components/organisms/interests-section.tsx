@@ -28,7 +28,8 @@ const ICONS = [
 
 export function InterestsSection() {
     const { t } = useLanguage();
-    const interests = t("interests.items") as { title: string; desc: string }[];
+    // Fix: Cast to unknown first
+    const interests = t("interests.items") as unknown as { title: string; desc: string }[];
 
     const container = {
         hidden: { opacity: 0 },

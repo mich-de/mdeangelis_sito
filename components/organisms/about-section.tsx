@@ -9,8 +9,9 @@ import { GlassCard } from "@/components/atoms/glass-card";
 export function AboutSection() {
     const { t } = useLanguage();
     // We need to cast "about.bio" to an object since t() returns string | object
-    const bio = t("about.bio") as { p1: string; p2: string; p3: string };
-    const tags = t("about.tags") as string[];
+    // Fix: Cast to unknown first to avoid "Conversion of type 'string' to type... may be a mistake"
+    const bio = t("about.bio") as unknown as { p1: string; p2: string; p3: string };
+    const tags = t("about.tags") as unknown as string[];
 
     return (
         <section id="about" className="py-20 bg-secondary/10 dark:bg-background relative overflow-hidden">
