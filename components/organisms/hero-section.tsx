@@ -83,11 +83,11 @@ export function HeroSection() {
                 style={{ y: y1, opacity }}
                 className="container mx-auto px-6 z-10 text-center flex flex-col items-center gap-6"
             >
-                <div className="mb-8 relative w-32 h-32 md:w-48 md:h-48 mx-auto hover:scale-110 transition-transform duration-500 bg-black rounded-full mix-blend-screen">
+                <div className="mb-8 relative w-32 h-32 md:w-48 md:h-48 mx-auto hover:scale-110 transition-transform duration-500">
                     <img
                         src="/assets/logo_symbol_transparent.png"
                         alt="mdeangelis Logo"
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(255,159,28,0.3)]"
                     />
                 </div>
 
