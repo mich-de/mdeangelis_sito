@@ -75,9 +75,9 @@ export function HeroSection() {
             className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
             id="home"
         >
-            <div className="absolute inset-0 overflow-hidden -z-10">
-                <div ref={orb1Ref} className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] mix-blend-screen" />
-                <div ref={orb2Ref} className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px] mix-blend-screen" />
+            <div className="absolute inset-0 overflow-hidden -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background">
+                <div ref={orb1Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[200px] opacity-50 mix-blend-screen" />
+                <div ref={orb2Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[200px] opacity-40 mix-blend-screen" />
             </div>
 
             <motion.div
