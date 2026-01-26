@@ -91,11 +91,19 @@ export function HeroSection() {
                     />
                 </div>
 
-                <h1 ref={titleRef} className="text-6xl md:text-8xl font-black tracking-tighter">
-                    <GradientText from="from-primary" via="via-accent" to="to-chart-3">
-                        {t("hero.titleBold")}
+                <h1 ref={titleRef} className="text-6xl md:text-8xl font-black tracking-tighter flex items-center justify-center gap-1">
+                    {/* M: Arancione Intenso -> Ambra Scura */}
+                    <GradientText from="from-accent" to="to-chart-3" className="via-accent/80">
+                        M
                     </GradientText>
-                    <span className="font-light text-foreground">{t("hero.titleLight")}</span>
+                    {/* DE: Slate Scuro -> Grigio Chiaro -> Argento Chiaro */}
+                    <GradientText from="from-secondary" via="via-muted-foreground" to="to-gray-300" className="opacity-90">
+                        DE
+                    </GradientText>
+                    {/* ANGELIS: Tende a Bianco Puro */}
+                    <span className="font-light text-foreground ml-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        ANGELIS
+                    </span>
                 </h1>
 
                 <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl">

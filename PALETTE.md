@@ -24,3 +24,9 @@ Il testo var(--white-primary) su var(--bg-primary) ha un contrasto eccellente.
 Il testo var(--gray-primary) su var(--bg-primary) è adatto per paragrafi lunghi.
 L'arancione var(--color-primary) è ottimo per bottoni o icone, ma usarlo per testo su sfondo scuro potrebbe richiedere una verifica del contrasto WCAG.
 
+## Gradienti Logo (MDEANGELIS)
+Il logo testuale utilizza una combinazione specifica di gradienti:
+*   **M**: Arancione Intenso (`--accent`) → Ambra Scura (`--chart-3`).
+*   **DE**: Slate Scuro (`--secondary`) → Grigio Chiaro (`--muted-foreground`) → Argento Chiaro (`#D6D6D6`).
+*   **ANGELIS**: Bianco Puro (`--foreground`) con *glow* bianco.
+
