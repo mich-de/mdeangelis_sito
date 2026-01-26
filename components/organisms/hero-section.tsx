@@ -72,60 +72,77 @@ export function HeroSection() {
     return (
         <section
             ref={heroRef}
-            className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+            className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-10"
             id="home"
         >
+            {/* Background Elements */}
             <div className="absolute inset-0 overflow-hidden -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background">
-                <div ref={orb1Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[200px] opacity-50 mix-blend-screen" />
-                <div ref={orb2Ref} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[200px] opacity-40 mix-blend-screen" />
+                <div ref={orb1Ref} className="absolute top-1/2 left-3/4 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[200px] opacity-40 mix-blend-screen" />
+                <div ref={orb2Ref} className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[200px] opacity-30 mix-blend-screen" />
             </div>
 
-            <motion.div
-                style={{ y: y1, opacity }}
-                className="container mx-auto px-6 z-10 text-center flex flex-col items-center gap-6"
-            >
-                <div className="mb-8 relative w-32 h-32 md:w-48 md:h-48 mx-auto hover:scale-110 transition-transform duration-500">
-                    <img
-                        src="/assets/logo_symbol_transparent.png"
-                        alt="mdeangelis Logo"
-                        className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(255,159,28,0.3)]"
-                    />
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                    
+                    {/* Left Column: Content */}
+                    <motion.div 
+                        style={{ y: y1, opacity }}
+                        className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 order-2 lg:order-1"
+                    >
+                        <h1 ref={titleRef} className="text-6xl md:text-8xl font-black tracking-tighter flex flex-col items-center lg:items-start gap-1 leading-tight">
+                            <div>
+                                <GradientText from="from-accent" to="to-chart-3" className="via-accent/80">
+                                    M
+                                </GradientText>
+                                <GradientText from="from-secondary" via="via-muted-foreground" to="to-gray-300" className="opacity-90">
+                                    DE
+                                </GradientText>
+                            </div>
+                            <span className="font-light text-foreground drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                                ANGELIS
+                            </span>
+                        </h1>
+
+                        <div className="space-y-4 max-w-2xl">
+                            <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground font-medium h-8">
+                                <Typewriter text={t("hero.subtitle") as string} speed={60} delay={1500} />
+                            </p>
+
+                            <p className="hero-description text-base md:text-lg text-muted-foreground/80 leading-relaxed">
+                                {t("hero.description")}
+                            </p>
+                        </div>
+
+                        <motion.div
+                            className="hero-cta pt-4"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <Button variant="premium" size="lg" className="rounded-full text-lg px-8 py-6 h-auto" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+                                {t("hero.cta")}
+                                <span className="ml-2">→</span>
+                            </Button>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Right Column: Visuals */}
+                    <motion.div 
+                        style={{ y: y2 }}
+                        className="flex justify-center items-center relative order-1 lg:order-2"
+                    >
+                        <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px] animate-float">
+                             {/* Blob effect behind logo */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-full blur-3xl animate-pulse-slow mix-blend-screen" />
+                            
+                            <img
+                                src="/assets/logo_symbol_transparent.png"
+                                alt="mdeangelis Logo"
+                                className="w-full h-full object-contain relative z-10 drop-shadow-[0_0_50px_rgba(255,159,28,0.4)]"
+                            />
+                        </div>
+                    </motion.div>
                 </div>
-
-                <h1 ref={titleRef} className="text-6xl md:text-8xl font-black tracking-tighter flex items-center justify-center gap-1">
-                    {/* M: Arancione Intenso -> Ambra Scura */}
-                    <GradientText from="from-accent" to="to-chart-3" className="via-accent/80">
-                        M
-                    </GradientText>
-                    {/* DE: Slate Scuro -> Grigio Chiaro -> Argento Chiaro */}
-                    <GradientText from="from-secondary" via="via-muted-foreground" to="to-gray-300" className="opacity-90">
-                        DE
-                    </GradientText>
-                    {/* ANGELIS: Tende a Bianco Puro */}
-                    <span className="font-light text-foreground ml-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                        ANGELIS
-                    </span>
-                </h1>
-
-                <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl h-8">
-                    <Typewriter text={t("hero.subtitle") as string} speed={60} delay={1500} />
-                </p>
-
-                <p className="hero-description text-base md:text-lg text-muted-foreground/80 max-w-xl leading-relaxed">
-                    {t("hero.description")}
-                </p>
-
-                <motion.div
-                    className="hero-cta mt-8"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <Button variant="premium" size="lg" className="rounded-full text-lg px-8 py-6 h-auto" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
-                        {t("hero.cta")}
-                        <span className="ml-2">→</span>
-                    </Button>
-                </motion.div>
-            </motion.div>
+            </div>
 
             {/* Scroll Down Indicator */}
             <motion.div
