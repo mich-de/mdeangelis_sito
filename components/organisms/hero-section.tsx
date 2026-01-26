@@ -87,7 +87,7 @@ export function HeroSection() {
                     <img
                         src="/assets/logo_symbol_transparent.png"
                         alt="mdeangelis Logo"
-                        className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(255,159,28,0.3)]"
+                        className="w-full h-full object-contain mix-blend-screen drop-shadow-[0_0_30px_rgba(255,159,28,0.3)]"
                     />
                 </div>
 
