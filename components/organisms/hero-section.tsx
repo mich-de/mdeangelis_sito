@@ -76,8 +76,8 @@ export function HeroSection() {
             id="home"
         >
             <div className="absolute inset-0 overflow-hidden -z-10">
-                <div ref={orb1Ref} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] mix-blend-screen animate-pulse" />
-                <div ref={orb2Ref} className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] mix-blend-screen" />
+                <div ref={orb1Ref} className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] mix-blend-screen" />
+                <div ref={orb2Ref} className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px] mix-blend-screen" />
             </div>
 
             <motion.div
