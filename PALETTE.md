@@ -30,3 +30,10 @@ Il logo testuale utilizza una combinazione specifica di gradienti:
 *   **DE**: Slate Scuro (`--secondary`) → Grigio Chiaro (`--muted-foreground`) → Argento Chiaro (`#D6D6D6`).
 *   **ANGELIS**: Bianco Puro (`--foreground`) con *glow* bianco.
 
+## Stile Titoli Sezione (H2)
+I titoli delle sezioni (Chi Sono, Interessi, Contatti) usano un gradiente coerente con il brand:
+`from-accent via-chart-1 to-chart-3` (Arancione Intenso → Arancione Vivace → Ambra Scura)
+
+## Sfondo Sezioni
+Tutte le sezioni usano `bg-background` per uniformità. La Hero section include orbs sfocati (`blur-[150px]`, `opacity: 10%`) per un leggero effetto glow che sfuma dolcemente nelle sezioni successive.
+
