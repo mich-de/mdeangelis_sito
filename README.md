@@ -1,44 +1,36 @@
-# mdeangelis.me - Personal Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This is the source code for the personal website of **mdeangelis**. It's designed to be a modern, premium, and professional showcase of interests, skills, and personal branding.
+## Getting Started
 
-## 🚀 Technologies Used
+First, run the development server:
 
-- **HTML5**: Semantic structure for SEO and accessibility.
-- **Vanilla CSS**: Custom styling with modern features like:
-  - Glassmorphism effects
-  - Mesh gradients and animated orbs
-  - CSS Custom Properties (Variables)
-  - Responsive layout (Mobile-first)
-- **Vanilla JavaScript**: Interactive elements, scroll animations, and mobile menu logic.
-- **Premium Typography**: Integration of custom fonts (Unitext, Kamerik) and Google Fonts (Inter, Outfit, JetBrains Mono).
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## 📁 Project Structure
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The project is organized into dedicated directories for better maintainability:
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- `assets/`: Images, icons, and logo files.
-- `css/`: Stylesheets including `styles.css` and `fonts.css`.
-- `js/`: JavaScript logic (`script.js`).
-- `fonts/`: Local font files for fast and reliable loading.
-- `scripts/`: Python utility scripts for image processing and asset generation.
-- `index.html`: The main entry point of the website.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## ✨ Key Features
+## Learn More
 
-- **Animated Hero Section**: A stunning first impression with moving gradients and floating orbs.
-- **Glassmorphism Design**: Modern UI components with blur and transparency.
-- **Mobile Responsive**: Fully optimized for all screen sizes.
-- **SEO Optimized**: Metatags, schema.org structured data, and semantic HTML.
-- **Interactive Interests**: A grid of personal passions with hover effects and smooth animations.
+To learn more about Next.js, take a look at the following resources:
 
-## 🛠️ Utilities
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-The `scripts/` folder contains several Python tools used during development:
-- `remove_dark_bg.py`: Removes dark backgrounds from images.
-- `make_transparent.py`: Creates transparent versions of logos.
-- `process_logo.py`: Optimizes and formats logo files.
-- `generate_exact_svg.py`: Utilities for SVG generation and manipulation.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
-*Built with passion in 2026.*
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
