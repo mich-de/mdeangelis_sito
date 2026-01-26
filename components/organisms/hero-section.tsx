@@ -74,10 +74,9 @@ export function HeroSection() {
             className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
             id="home"
         >
-            {/* Background Orbs */}
             <div className="absolute inset-0 overflow-hidden -z-10">
-                <div ref={orb1Ref} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[100px] mix-blend-screen animate-pulse" />
-                <div ref={orb2Ref} className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-[100px] mix-blend-screen" />
+                <div ref={orb1Ref} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] mix-blend-screen animate-pulse" />
+                <div ref={orb2Ref} className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] mix-blend-screen" />
             </div>
 
             <motion.div
@@ -93,7 +92,7 @@ export function HeroSection() {
                 </div>
 
                 <h1 ref={titleRef} className="text-6xl md:text-8xl font-black tracking-tighter">
-                    <GradientText from="from-blue-600 dark:from-blue-400" via="via-indigo-500 dark:via-indigo-300" to="to-purple-600 dark:to-purple-400">
+                    <GradientText from="from-primary" via="via-accent" to="to-chart-3">
                         {t("hero.titleBold")}
                     </GradientText>
                     <span className="font-light text-foreground">{t("hero.titleLight")}</span>
