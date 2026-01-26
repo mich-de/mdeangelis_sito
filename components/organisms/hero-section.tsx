@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { GradientText } from "@/components/atoms/gradient-text";
+import { Typewriter } from "@/components/atoms/typewriter";
 import { useLanguage } from "@/context/language-provider";
 import { useMousePosition } from "@/hooks/use-mouse-position";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -106,8 +107,8 @@ export function HeroSection() {
                     </span>
                 </h1>
 
-                <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl">
-                    {t("hero.subtitle")}
+                <p className="hero-subtitle text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl h-8">
+                    <Typewriter text={t("hero.subtitle") as string} speed={60} delay={1500} />
                 </p>
 
                 <p className="hero-description text-base md:text-lg text-muted-foreground/80 max-w-xl leading-relaxed">
