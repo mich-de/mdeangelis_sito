@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useScrollDirection } from "@/hooks/use-scroll-direction";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/molecules/theme-toggle";
 import { LanguageSwitch } from "@/components/molecules/language-switch";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -35,8 +34,8 @@ export function Navbar() {
         >
             <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="text-xl font-bold tracking-tighter text-foreground hover:text-primary transition-colors">
-                    MDE<span className="font-light">ANGELIS</span>
+                <Link href="/" className="text-xl font-bold tracking-tighter text-foreground hover:text-primary transition-colors flex items-center">
+                    <span className="font-sans">MDE</span><span className="font-display font-light">ANGELIS</span>
                 </Link>
 
                 {/* Desktop Menu */}
@@ -55,7 +54,6 @@ export function Navbar() {
                         ))}
                     </ul>
                     <div className="flex items-center gap-2 border-l pl-4 border-border">
-                        <ThemeToggle />
                         <LanguageSwitch />
                     </div>
                 </div>
@@ -63,7 +61,6 @@ export function Navbar() {
                 {/* Mobile Menu */}
                 <div className="md:hidden flex items-center gap-4">
                     <div className="flex items-center gap-1">
-                        <ThemeToggle />
                         <LanguageSwitch />
                     </div>
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>

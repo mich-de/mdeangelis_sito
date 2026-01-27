@@ -7,6 +7,7 @@ import { Typewriter } from "@/components/atoms/typewriter";
 import { useLanguage } from "@/context/language-provider";
 import { useMousePosition } from "@/hooks/use-mouse-position";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import gsap from "gsap";
 
 export function HeroSection() {
@@ -90,9 +91,11 @@ export function HeroSection() {
                         className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 order-2 lg:order-1"
                     >
                         <h1 ref={titleRef} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter inline-flex items-baseline justify-center lg:justify-start leading-tight whitespace-nowrap">
-                            <GradientText from="from-accent" to="to-chart-3" className="via-accent/80">M</GradientText>
-                            <GradientText from="from-secondary" via="via-muted-foreground" to="to-gray-300" className="opacity-90">DE</GradientText>
-                            <span className="font-light text-foreground drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">ANGELIS</span>
+                            <span className="font-sans inline-flex">
+                                <GradientText from="from-accent" to="to-chart-3" className="via-accent/80">M</GradientText>
+                                <GradientText from="from-secondary" via="via-muted-foreground" to="to-gray-300" className="opacity-90">DE</GradientText>
+                            </span>
+                            <span className="font-display font-light text-foreground drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">ANGELIS</span>
                         </h1>
 
                         <div className="space-y-4 max-w-2xl">
@@ -105,16 +108,7 @@ export function HeroSection() {
                             </p>
                         </div>
 
-                        <motion.div
-                            className="hero-cta pt-4"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <Button variant="premium" size="lg" className="rounded-full text-lg px-8 py-6 h-auto" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
-                                {t("hero.cta")}
-                                <span className="ml-2">→</span>
-                            </Button>
-                        </motion.div>
+
                     </motion.div>
 
                     {/* Right Column: Visuals */}
@@ -152,14 +146,16 @@ export function HeroSection() {
             </div>
 
             {/* Scroll Down Indicator */}
+            {/* Scroll Down Indicator */}
             <motion.div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, y: [0, 10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", opacity: { duration: 1, delay: 2 } }}
+                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
             >
-                <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center pt-2">
-                    <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full" />
-                </div>
+                <span className="text-[10px] tracking-[0.2em] font-medium text-muted-foreground/70 uppercase">Scroll</span>
+                <ChevronDown className="w-6 h-6 text-primary/80" />
             </motion.div>
         </section>
     );

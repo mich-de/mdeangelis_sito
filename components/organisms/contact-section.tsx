@@ -7,12 +7,12 @@ import { useLanguage } from "@/context/language-provider";
 import { motion } from "framer-motion";
 
 const socialLinks = [
-    { href: "https://github.com/mdeangelis", icon: "icon_social_github.png", label: "GitHub" },
-    { href: "https://linkedin.com/in/mdeangelis", icon: "icon_social_linkedin.png", label: "LinkedIn" },
-    { href: "https://twitter.com/mdeangelis", icon: "icon_social_twitter.png", label: "Twitter" },
-    { href: "https://instagram.com/mdeangelis", icon: "icon_social_instagram.png", label: "Instagram" },
-    { href: "https://youtube.com/@mdeangelis", icon: "icon_social_youtube.png", label: "YouTube" },
-    { href: "https://tiktok.com/@mdeangelis", icon: "icon_social_tiktok.png", label: "TikTok" }
+    /*{ href: "https://github.com/mdeangelis", icon: "icon_social_github.svg", label: "GitHub" },*/
+    /* { href: "https://linkedin.com/in/mdeangelis", icon: "icon_social_linkedin.svg", label: "LinkedIn" },*/
+    /* { href: "https://twitter.com/mdeangelis", icon: "icon_social_twitter.svg", label: "Twitter" },*/
+    { href: "https://instagram.com/mdeangelis_official", icon: "icon_social_instagram.png", label: "Instagram" },
+    { href: "https://music.youtube.com/channel/UCYJ3e3Ho1Jv2o2NhuI3JO7A", icon: "icon_social_youtube.png", label: "YouTube Music" },
+    /* { href: "https://tiktok.com/@mdeangelis", icon: "icon_social_tiktok.svg", label: "TikTok" }*/
 ];
 
 export function ContactSection() {

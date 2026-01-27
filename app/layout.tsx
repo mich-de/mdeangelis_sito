@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import { LanguageProvider } from "@/context/language-provider";
 import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const kamerik = localFont({
+  src: "./fonts/kamerik.woff2",
+  variable: "--font-kamerik",
+  weight: "400",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const unitext = localFont({
+  src: "./fonts/unitext.woff2",
+  variable: "--font-unitext",
+  weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -30,14 +34,15 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          geistSans.variable,
-          geistMono.variable
+          kamerik.variable,
+          unitext.variable
         )}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
+          forcedTheme="dark"
           disableTransitionOnChange
         >
           <LanguageProvider>

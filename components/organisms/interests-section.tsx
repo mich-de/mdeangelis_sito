@@ -249,7 +249,7 @@ const interestData = {
         },
         {
             id: "musica",
-            icon: "/assets/icon_music.png",
+            icon: "/assets/icon_music.svg",
             title: "Music",
             modalTitle: "Soundscapes & Rhythm",
             description: "Production and sound design",
@@ -258,10 +258,10 @@ const interestData = {
         <p>I also dabble in digital music production, exploring synthesizers and sound design. Music accompanies every coding session, setting the rhythm of the workflow.</p>
       `,
             links: [
-                { label: "Spotify", icon: "/assets/icon_music_spotify.png", href: "https://open.spotify.com/intl-it/artist/3OucxkLy5uqnpSEHavZbpe", color: "#1DB954" },
-                { label: "Apple Music", icon: "/assets/icon_music_applemusic.png", href: "https://music.apple.com/us/artist/mdeangelis/1796261710", color: "#FC3C44" },
-                { label: "YouTube", icon: "/assets/icon_social_youtube.png", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" },
-                { label: "SoundCloud", icon: "/assets/icon_music_soundcloud.png", href: "https://soundcloud.com/mdeangelis", color: "#FF5500" }
+                { label: "Spotify", icon: "/assets/icon_music_spotify.svg", href: "https://open.spotify.com/intl-it/artist/3OucxkLy5uqnpSEHavZbpe", color: "#1DB954" },
+                { label: "Apple Music", icon: "/assets/icon_music_applemusic.svg", href: "https://music.apple.com/us/artist/mdeangelis/1796261710", color: "#FC3C44" },
+                { label: "YouTube", icon: "/assets/icon_social_youtube.svg", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" },
+                { label: "SoundCloud", icon: "/assets/icon_music_soundcloud.svg", href: "https://soundcloud.com/mdeangelis", color: "#FF5500" }
             ]
         },
         {

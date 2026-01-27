@@ -72,7 +72,7 @@ export function AboutSection() {
                         className="space-y-6"
                     >
                         <GlassCard className="p-8 border-l-4 border-l-primary bg-background/40">
-                            <p className="text-xl font-medium italic text-foreground/90">"{t("about.quote")}"</p>
+                            <p className="text-xl font-medium italic text-foreground/90 font-display">"{t("about.quote")}"</p>
                         </GlassCard>
 
                         <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
