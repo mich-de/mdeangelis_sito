@@ -11,8 +11,8 @@ const socialLinks = [
     { href: "https://linkedin.com/in/mdeangelis", icon: "icon_social_linkedin.png", label: "LinkedIn" },
     { href: "https://twitter.com/mdeangelis", icon: "icon_social_twitter.png", label: "Twitter" },
     { href: "https://instagram.com/mdeangelis", icon: "icon_social_instagram.png", label: "Instagram" },
-    { href: "https://youtube.com/@mdeangelis", icon: "icon_social_youtube.png", label: "YouTube" },
-    { href: "https://tiktok.com/@mdeangelis", icon: "icon_social_tiktok.png", label: "TikTok" }
+    { href: "https://youtube.com/@mdeangelis", icon: "icon_social_youtube_v2.png", label: "YouTube" },
+    { href: "https://tiktok.com/@mdeangelis", icon: "icon_social_tiktok_v2.png", label: "TikTok" }
 ];
 
 export function ContactSection() {
