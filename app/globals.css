@@ -163,6 +163,36 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Smooth scroll - replaces JS smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Keyboard navigation focus - replaces JS keyboard-nav class */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
 }
 
 /* Custom Animations for Premium Effects */
@@ -386,4 +416,192 @@ h6 {
 
 .accent-underline:hover::after {
   transform: scaleX(1);
+}
+
+/* ========================================
+   SCROLL-TRIGGERED FADE ANIMATIONS
+   CSS-only replacement for IntersectionObserver
+   ======================================== */
+
+/* Fade-in from bottom on scroll */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fallback for browsers without view timeline */
+@supports not (animation-timeline: view()) {
+  .fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+}
+
+/* ========================================
+   BUTTON ACTIVE STATES
+   CSS-only replacement for JS click effect
+   ======================================== */
+
+button:active,
+.btn:active,
+[role="button"]:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* ========================================
+   3D CARD TILT ON HOVER
+   CSS-only approximation of JS mousemove tilt
+   ======================================== */
+
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) scale3d(1.02, 1.02, 1.02);
+  box-shadow: var(--card-hover-shadow);
+}
+
+/* ========================================
+   INTEREST CARD STYLES
+   Premium glassmorphism cards for interests section
+   ======================================== */
+
+.interesse-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interesse-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(var(--primary), 0.15) 0%,
+      transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.interesse-card:hover::before {
+  opacity: 1;
+}
+
+.interesse-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary);
+}
+
+.dark .interesse-card:hover {
+  box-shadow: 0 12px 40px rgba(251, 146, 60, 0.1);
+}
+
+/* ========================================
+   MODAL STYLES
+   Premium modal overlay and content
+   ======================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.open .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+
+.modal-body p {
+  margin-bottom: 1rem;
+}
+
+.modal-body p:last-child {
+  margin-bottom: 0;
 }
