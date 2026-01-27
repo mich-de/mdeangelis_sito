@@ -249,7 +249,7 @@ const interestData = {
         },
         {
             id: "musica",
-            icon: "/assets/icon_music.svg",
+            icon: "/assets/icon_music.png",
             title: "Music",
             modalTitle: "Soundscapes & Rhythm",
             description: "Production and sound design",
