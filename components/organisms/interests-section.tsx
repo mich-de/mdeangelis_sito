@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useLanguage } from "@/context/language-provider";
-import { cn } from "@/lib/utils";
 
-// Interest data - migrated from legacy script.js
+// Interest data - using custom 3D icons from /assets/
 const interestData = {
     it: [
         {
             id: "informatica",
-            icon: "💻",
+            icon: "/assets/icon_home.png", // Computer/home icon
             title: "Informatica",
             modalTitle: "Informatica & Architetture",
             description: "Architetture, sistemi e sicurezza",
@@ -22,7 +22,7 @@ const interestData = {
         },
         {
             id: "tecnologia",
-            icon: "🔮",
+            icon: "/assets/icon_tech.png",
             title: "Tecnologia",
             modalTitle: "Frontiera Tecnologica",
             description: "Hardware, IoT e innovazione",
@@ -33,7 +33,7 @@ const interestData = {
         },
         {
             id: "programmazione",
-            icon: "⌨️",
+            icon: "/assets/icon_programming.png",
             title: "Programmazione",
             modalTitle: "Arte del Codice",
             description: "Clean Code e Best Practices",
@@ -44,7 +44,7 @@ const interestData = {
         },
         {
             id: "ai",
-            icon: "🤖",
+            icon: "/assets/icon_ai.png",
             title: "Intelligenza Artificiale",
             modalTitle: "AI & Machine Learning",
             description: "LLM, reti neurali e etica AI",
@@ -55,7 +55,7 @@ const interestData = {
         },
         {
             id: "viaggi",
-            icon: "✈️",
+            icon: "/assets/icon_travel.png",
             title: "Viaggi",
             modalTitle: "Esplorazione Globale",
             description: "Scoprire il mondo e nuove culture",
@@ -66,7 +66,7 @@ const interestData = {
         },
         {
             id: "passeggiate",
-            icon: "🚶",
+            icon: "/assets/icon_walks.png",
             title: "Passeggiate",
             modalTitle: "Walking & Thinking",
             description: "Debugging mentale e chiarezza",
@@ -77,7 +77,7 @@ const interestData = {
         },
         {
             id: "lettura",
-            icon: "📚",
+            icon: "/assets/icon_reading.png",
             title: "Lettura",
             modalTitle: "Biblioteca Mentale",
             description: "Life-long Learning",
@@ -88,7 +88,7 @@ const interestData = {
         },
         {
             id: "musica",
-            icon: "🎵",
+            icon: "/assets/icon_music.png",
             title: "Musica",
             modalTitle: "Soundscapes & Ritmo",
             description: "Produzione e sound design",
@@ -97,14 +97,14 @@ const interestData = {
         <p>Mi diletto anche nella produzione musicale digitale, esplorando sintetizzatori e sound design. La musica accompagna ogni mia sessione di coding, dettando il ritmo del flusso di lavoro.</p>
       `,
             links: [
-                { label: "Spotify", href: "https://open.spotify.com/intl-it/artist/3OucxkLy5uqnpSEHavZbpe", color: "#1DB954" },
-                { label: "Apple Music", href: "https://music.apple.com/us/artist/mdeangelis/1796261710", color: "#FC3C44" },
-                { label: "YouTube Music", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" }
+                { label: "Spotify", icon: "/assets/icon_music_spotify.png", href: "https://open.spotify.com/intl-it/artist/3OucxkLy5uqnpSEHavZbpe", color: "#1DB954" },
+                { label: "Apple Music", icon: "/assets/icon_music_applemusic.png", href: "https://music.apple.com/us/artist/mdeangelis/1796261710", color: "#FC3C44" },
+                { label: "YouTube", icon: "/assets/icon_social_youtube.png", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" }
             ]
         },
         {
             id: "cultura",
-            icon: "🎭",
+            icon: "/assets/icon_culture.png",
             title: "Cultura",
             modalTitle: "Arte & Storia",
             description: "Musei, cinema e pensiero laterale",
@@ -115,7 +115,7 @@ const interestData = {
         },
         {
             id: "amici",
-            icon: "👥",
+            icon: "/assets/icon_friends.png",
             title: "Amici",
             modalTitle: "Connessioni Autentiche",
             description: "La famiglia che scegliamo",
@@ -126,7 +126,7 @@ const interestData = {
         },
         {
             id: "cibo",
-            icon: "🍽️",
+            icon: "/assets/icon_food.png",
             title: "Buon Cibo",
             modalTitle: "Gastronomia & Gusto",
             description: "Cultura commestibile",
@@ -137,7 +137,7 @@ const interestData = {
         },
         {
             id: "vini",
-            icon: "🍷",
+            icon: "/assets/icon_wine.png",
             title: "Vini",
             modalTitle: "Enologia & Passione",
             description: "Vitigni, terroir e degustazioni",
@@ -148,7 +148,7 @@ const interestData = {
         },
         {
             id: "conversazioni",
-            icon: "💬",
+            icon: "/assets/icon_conversation.png",
             title: "Conversazioni",
             modalTitle: "Dialettica & Scambio",
             description: "Dibattiti e confronti costruttivi",
@@ -159,7 +159,7 @@ const interestData = {
         },
         {
             id: "lingue",
-            icon: "🌐",
+            icon: "/assets/icon_languages.png",
             title: "Lingue",
             modalTitle: "Poliglotta",
             description: "Italiano, Inglese e oltre",
@@ -172,7 +172,7 @@ const interestData = {
     en: [
         {
             id: "informatica",
-            icon: "💻",
+            icon: "/assets/icon_home.png",
             title: "Computer Science",
             modalTitle: "Computer Science & Architectures",
             description: "Architectures, systems and security",
@@ -183,7 +183,7 @@ const interestData = {
         },
         {
             id: "tecnologia",
-            icon: "🔮",
+            icon: "/assets/icon_tech.png",
             title: "Technology",
             modalTitle: "Technology Frontier",
             description: "Hardware, IoT and innovation",
@@ -194,7 +194,7 @@ const interestData = {
         },
         {
             id: "programmazione",
-            icon: "⌨️",
+            icon: "/assets/icon_programming.png",
             title: "Programming",
             modalTitle: "The Art of Code",
             description: "Clean Code and Best Practices",
@@ -205,7 +205,7 @@ const interestData = {
         },
         {
             id: "ai",
-            icon: "🤖",
+            icon: "/assets/icon_ai.png",
             title: "Artificial Intelligence",
             modalTitle: "AI & Machine Learning",
             description: "LLMs, neural networks and AI ethics",
@@ -216,7 +216,7 @@ const interestData = {
         },
         {
             id: "viaggi",
-            icon: "✈️",
+            icon: "/assets/icon_travel.png",
             title: "Travel",
             modalTitle: "Global Exploration",
             description: "Discovering the world and new cultures",
@@ -227,7 +227,7 @@ const interestData = {
         },
         {
             id: "passeggiate",
-            icon: "🚶",
+            icon: "/assets/icon_walks.png",
             title: "Walking",
             modalTitle: "Walking & Thinking",
             description: "Mental debugging and clarity",
@@ -238,7 +238,7 @@ const interestData = {
         },
         {
             id: "lettura",
-            icon: "📚",
+            icon: "/assets/icon_reading.png",
             title: "Reading",
             modalTitle: "Mental Library",
             description: "Life-long Learning",
@@ -249,7 +249,7 @@ const interestData = {
         },
         {
             id: "musica",
-            icon: "🎵",
+            icon: "/assets/icon_music.png",
             title: "Music",
             modalTitle: "Soundscapes & Rhythm",
             description: "Production and sound design",
@@ -258,14 +258,14 @@ const interestData = {
         <p>I also dabble in digital music production, exploring synthesizers and sound design. Music accompanies every coding session, setting the rhythm of the workflow.</p>
       `,
             links: [
-                { label: "Spotify", href: "https://open.spotify.com/intl-it/artist/3OucxkLy5uqnpSEHavZbpe", color: "#1DB954" },
-                { label: "Apple Music", href: "https://music.apple.com/us/artist/mdeangelis/1796261710", color: "#FC3C44" },
-                { label: "YouTube Music", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" }
+                { label: "Spotify", icon: "/assets/icon_music_spotify.png", href: "https://open.spotify.com/intl-it/artist/3OucxkLy5uqnpSEHavZbpe", color: "#1DB954" },
+                { label: "Apple Music", icon: "/assets/icon_music_applemusic.png", href: "https://music.apple.com/us/artist/mdeangelis/1796261710", color: "#FC3C44" },
+                { label: "YouTube", icon: "/assets/icon_social_youtube.png", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" }
             ]
         },
         {
             id: "cultura",
-            icon: "🎭",
+            icon: "/assets/icon_culture.png",
             title: "Culture",
             modalTitle: "Art & History",
             description: "Museums, cinema and lateral thinking",
@@ -276,7 +276,7 @@ const interestData = {
         },
         {
             id: "amici",
-            icon: "👥",
+            icon: "/assets/icon_friends.png",
             title: "Friends",
             modalTitle: "Authentic Connections",
             description: "The family we choose",
@@ -287,7 +287,7 @@ const interestData = {
         },
         {
             id: "cibo",
-            icon: "🍽️",
+            icon: "/assets/icon_food.png",
             title: "Good Food",
             modalTitle: "Gastronomy & Taste",
             description: "Edible culture",
@@ -298,7 +298,7 @@ const interestData = {
         },
         {
             id: "vini",
-            icon: "🍷",
+            icon: "/assets/icon_wine.png",
             title: "Wines",
             modalTitle: "Enology & Passion",
             description: "Grape varieties, terroir and tastings",
@@ -309,7 +309,7 @@ const interestData = {
         },
         {
             id: "conversazioni",
-            icon: "💬",
+            icon: "/assets/icon_conversation.png",
             title: "Conversations",
             modalTitle: "Dialectics & Exchange",
             description: "Debates and constructive discussions",
@@ -320,7 +320,7 @@ const interestData = {
         },
         {
             id: "lingue",
-            icon: "🌐",
+            icon: "/assets/icon_languages.png",
             title: "Languages",
             modalTitle: "Polyglot",
             description: "Italian, English and beyond",
@@ -332,28 +332,41 @@ const interestData = {
     ]
 };
 
+type Interest = typeof interestData.it[0];
+
 // Interest Card Component
 function InterestCard({
     interest,
-    onClick
+    onClick,
+    index
 }: {
-    interest: typeof interestData.it[0];
+    interest: Interest;
     onClick: () => void;
+    index: number;
 }) {
     return (
         <motion.div
-            className="interesse-card p-6 card-3d"
+            className="interesse-card p-5 card-3d flex flex-col items-center text-center group"
             onClick={onClick}
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
         >
-            <div className="text-4xl mb-4">{interest.icon}</div>
-            <h3 className="text-lg font-semibold text-foreground mb-2">{interest.title}</h3>
-            <p className="text-sm text-muted-foreground">{interest.description}</p>
+            {/* 3D Icon */}
+            <div className="relative w-16 h-16 mb-4 transition-transform duration-300 group-hover:scale-110">
+                <Image
+                    src={interest.icon}
+                    alt={interest.title}
+                    fill
+                    className="object-contain drop-shadow-lg"
+                    sizes="64px"
+                />
+            </div>
+            <h3 className="text-base font-semibold text-foreground mb-1">{interest.title}</h3>
+            <p className="text-xs text-muted-foreground line-clamp-2">{interest.description}</p>
         </motion.div>
     );
 }
@@ -366,7 +379,7 @@ function InterestModal({
 }: {
     isOpen: boolean;
     onClose: () => void;
-    interest: typeof interestData.it[0] | null;
+    interest: Interest | null;
 }) {
     if (!interest) return null;
 
@@ -391,7 +404,7 @@ function InterestModal({
 
                     {/* Modal Content */}
                     <motion.div
-                        className="relative z-10 w-full max-w-lg max-h-[80vh] overflow-y-auto bg-card border border-border rounded-xl shadow-2xl"
+                        className="relative z-10 w-full max-w-lg max-h-[85vh] overflow-y-auto bg-card border border-border rounded-2xl shadow-2xl"
                         initial={{ scale: 0.9, y: 20, opacity: 0 }}
                         animate={{ scale: 1, y: 0, opacity: 1 }}
                         exit={{ scale: 0.9, y: 20, opacity: 0 }}
@@ -400,16 +413,24 @@ function InterestModal({
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between p-6 border-b border-border">
-                            <div className="flex items-center gap-3">
-                                <span className="text-3xl">{interest.icon}</span>
+                            <div className="flex items-center gap-4">
+                                <div className="relative w-12 h-12">
+                                    <Image
+                                        src={interest.icon}
+                                        alt={interest.modalTitle}
+                                        fill
+                                        className="object-contain"
+                                        sizes="48px"
+                                    />
+                                </div>
                                 <h2 className="text-xl font-bold text-foreground">{interest.modalTitle}</h2>
                             </div>
                             <button
                                 onClick={onClose}
-                                className="w-8 h-8 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
+                                className="w-9 h-9 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
                                 aria-label="Close modal"
                             >
-                                <X className="w-4 h-4" />
+                                <X className="w-5 h-5" />
                             </button>
                         </div>
 
@@ -422,7 +443,7 @@ function InterestModal({
                         {/* Music Links (if applicable) */}
                         {interest.links && (
                             <div className="px-6 pb-6 pt-2 border-t border-border mt-2">
-                                <p className="text-sm font-semibold text-foreground mb-3">🎧 Listen to my productions:</p>
+                                <p className="text-sm font-semibold text-foreground mb-4">🎧 Ascolta le mie produzioni:</p>
                                 <div className="flex flex-wrap gap-3">
                                     {interest.links.map((link) => (
                                         <a
@@ -430,12 +451,19 @@ function InterestModal({
                                             href={link.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="px-4 py-2 rounded-lg text-sm font-medium transition-transform hover:scale-105"
+                                            className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all hover:scale-105"
                                             style={{
-                                                backgroundColor: `${link.color}20`,
+                                                backgroundColor: `${link.color}15`,
                                                 color: link.color
                                             }}
                                         >
+                                            <Image
+                                                src={link.icon}
+                                                alt={link.label}
+                                                width={24}
+                                                height={24}
+                                                className="object-contain"
+                                            />
                                             {link.label}
                                         </a>
                                     ))}
@@ -451,13 +479,13 @@ function InterestModal({
 
 // Main Interests Section
 export function InterestsSection() {
-    const { language, t } = useLanguage();
-    const [selectedInterest, setSelectedInterest] = useState<typeof interestData.it[0] | null>(null);
+    const { language } = useLanguage();
+    const [selectedInterest, setSelectedInterest] = useState<Interest | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const interests = language === "it" ? interestData.it : interestData.en;
 
-    const openModal = (interest: typeof interestData.it[0]) => {
+    const openModal = (interest: Interest) => {
         setSelectedInterest(interest);
         setIsModalOpen(true);
         document.body.style.overflow = "hidden";
@@ -479,9 +507,18 @@ export function InterestsSection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="heading-2 mb-4">
-                        {language === "it" ? "I Miei Interessi" : "My Interests"}
-                    </h2>
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                        <Image
+                            src="/assets/icon_section_passions.png"
+                            alt=""
+                            width={48}
+                            height={48}
+                            className="object-contain"
+                        />
+                        <h2 className="heading-2">
+                            {language === "it" ? "I Miei Interessi" : "My Interests"}
+                        </h2>
+                    </div>
                     <p className="text-muted-foreground max-w-2xl mx-auto">
                         {language === "it"
                             ? "Passioni che alimentano la mia creatività e guidano il mio percorso professionale e personale."
@@ -490,12 +527,13 @@ export function InterestsSection() {
                 </motion.div>
 
                 {/* Interest Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                    {interests.map((interest) => (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4">
+                    {interests.map((interest, index) => (
                         <InterestCard
                             key={interest.id}
                             interest={interest}
                             onClick={() => openModal(interest)}
+                            index={index}
                         />
                     ))}
                 </div>
