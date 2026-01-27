@@ -420,37 +420,56 @@ h6 {
 
 /* ========================================
    SECTION VISUAL SEPARATION
-   Unified Style - Card containers emerging from background
+   Premium design - Apple/Stripe/Linear style
    ======================================== */
 
-/* Default section style - full width */
+/* Default section style - generous spacing, full width */
 section {
   position: relative;
   width: 100%;
-  padding-block: clamp(2rem, 5vw, 3rem);
+  padding-block: clamp(4rem, 10vw, 8rem);
 }
 
-/* Section Content Container - Card that emerges */
-.section-container {
-  background: var(--background);
-  border-radius: 1.25rem;
-  padding: clamp(2rem, 5vw, 3rem);
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    0 6px 16px rgba(0, 0, 0, 0.04);
-  border: 1px solid var(--border);
+/* Gradient fade at section edges - creates seamless transitions */
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, transparent);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.dark .section-container {
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.3),
-    0 8px 24px rgba(0, 0, 0, 0.2);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-/* Section without card (transparent) */
+/* Alternate section - subtle color shift for visual rhythm */
 .section-alternate {
-  background: transparent;
+  background: linear-gradient(180deg,
+      var(--secondary) 0%,
+      color-mix(in srgb, var(--secondary) 97%, var(--background)) 50%,
+      var(--secondary) 100%);
+}
+
+/* Depth effect - very subtle top edge highlight */
+.section-alternate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--border) 20%,
+      var(--border) 80%,
+      transparent 100%);
+  opacity: 0.5;
+}
+
+/* Dark mode adjustments */
+.dark .section-alternate::after {
+  opacity: 0.3;
 }
 
 /* ========================================
