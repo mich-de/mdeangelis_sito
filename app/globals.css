@@ -292,19 +292,14 @@ h6 {
   line-height: 1;
 }
 
-/* H2 - Section Titles */
+/* H2 - Section Titles - Clean and Professional */
 .heading-2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  background: linear-gradient(135deg,
-      var(--primary) 0%,
-      var(--accent) 40%,
-      var(--muted-foreground) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--foreground);
 }
 
 /* H3 - Subsection Titles */
@@ -425,31 +420,37 @@ h6 {
 
 /* ========================================
    SECTION VISUAL SEPARATION
-   Professional web architect approach
+   Unified Style - Card containers emerging from background
    ======================================== */
 
-/* Default section style - full width with subtle depth */
+/* Default section style - full width */
 section {
   position: relative;
   width: 100%;
+  padding-block: clamp(2rem, 5vw, 3rem);
 }
 
-/* Alternate section - creates visual rhythm */
+/* Section Content Container - Card that emerges */
+.section-container {
+  background: var(--background);
+  border-radius: 1.25rem;
+  padding: clamp(2rem, 5vw, 3rem);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 6px 16px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border);
+}
+
+.dark .section-container {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Section without card (transparent) */
 .section-alternate {
-  background-color: var(--secondary) !important;
-}
-
-/* Professional depth effect - subtle inner shadow on alternate sections */
-.section-alternate::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.03), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
-}
-
-.dark .section-alternate::before {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02), inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+  background: transparent;
 }
 
 /* ========================================

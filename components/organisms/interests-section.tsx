@@ -497,8 +497,8 @@ export function InterestsSection() {
     };
 
     return (
-        <section id="interests" className="py-24 px-6">
-            <div className="container mx-auto max-w-6xl">
+        <section id="interests" className="px-6">
+            <div className="section-container container mx-auto max-w-6xl">
                 {/* Section Header */}
                 <motion.div
                     className="text-center mb-16"

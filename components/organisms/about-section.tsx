@@ -14,8 +14,8 @@ export function AboutSection() {
     const tags = t("about.tags") as unknown as string[];
 
     return (
-        <section id="about" className="py-20 section-alternate relative overflow-hidden">
-            <div className="container mx-auto px-6 relative z-10">
+        <section id="about" className="relative overflow-hidden px-6">
+            <div className="section-container container mx-auto relative z-10">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
