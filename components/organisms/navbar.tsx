@@ -34,8 +34,8 @@ export function Navbar() {
         >
             <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="text-xl font-bold tracking-tighter text-foreground hover:text-primary transition-colors flex items-center">
-                    <span className="font-sans">MDE</span><span className="font-display font-light">ANGELIS</span>
+                <Link href="/" className="text-xl font-bold tracking-tighter text-foreground hover:text-primary transition-colors flex items-center group">
+                    <span className="font-sans">MDE</span><span className="font-display font-light glitch-hover" data-text="ANGELIS">ANGELIS</span>
                 </Link>
 
                 {/* Desktop Menu */}

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { SpotifyIcon, AppleMusicIcon, YouTubeIcon, SoundCloudIcon } from "@/components/atoms/brand-icons";
 import { useLanguage } from "@/context/language-provider";
 
 // Interest data - using custom 3D icons from /assets/
@@ -99,7 +100,8 @@ const interestData = {
             links: [
                 { label: "Spotify", icon: "/assets/icon_music_spotify.png", href: "https://open.spotify.com/intl-it/artist/3OucxkLy5uqnpSEHavZbpe", color: "#1DB954" },
                 { label: "Apple Music", icon: "/assets/icon_music_applemusic.png", href: "https://music.apple.com/us/artist/mdeangelis/1796261710", color: "#FC3C44" },
-                { label: "YouTube", icon: "/assets/icon_social_youtube.png", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" }
+                { label: "YouTube", icon: "/assets/icon_social_youtube.png", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" },
+                { label: "SoundCloud", icon: "/assets/icon_music_soundcloud.png", href: "https://soundcloud.com/mdeangelis", color: "#FF5500" }
             ]
         },
         {
@@ -258,10 +260,10 @@ const interestData = {
         <p>I also dabble in digital music production, exploring synthesizers and sound design. Music accompanies every coding session, setting the rhythm of the workflow.</p>
       `,
             links: [
-                { label: "Spotify", icon: "/assets/icon_music_spotify.svg", href: "https://open.spotify.com/intl-it/artist/3OucxkLy5uqnpSEHavZbpe", color: "#1DB954" },
-                { label: "Apple Music", icon: "/assets/icon_music_applemusic.svg", href: "https://music.apple.com/us/artist/mdeangelis/1796261710", color: "#FC3C44" },
-                { label: "YouTube", icon: "/assets/icon_social_youtube.svg", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" },
-                { label: "SoundCloud", icon: "/assets/icon_music_soundcloud.svg", href: "https://soundcloud.com/mdeangelis", color: "#FF5500" }
+                { label: "Spotify", icon: "/assets/icon_music_spotify_v6.png", href: "https://open.spotify.com/intl-it/artist/3OucxkLy5uqnpSEHavZbpe", color: "#1DB954" },
+                { label: "Apple Music", icon: "/assets/icon_music_applemusic.png", href: "https://music.apple.com/us/artist/mdeangelis/1796261710", color: "#FC3C44" },
+                { label: "YouTube", icon: "/assets/icon_social_youtube.png", href: "https://music.youtube.com/watch?v=KHAmgXV0C3E&si=NrSRWKvDqQhWrx_g", color: "#FF0000" },
+                { label: "SoundCloud", icon: "/assets/icon_music_soundcloud.png", href: "https://soundcloud.com/mdeangelis", color: "#FF5500" }
             ]
         },
         {
@@ -366,7 +368,12 @@ function InterestCard({
                     sizes="64px"
                 />
             </div>
-            <h3 className="text-base font-semibold text-foreground mb-1">{interest.title}</h3>
+            <h3
+                className="text-base font-semibold text-foreground mb-1 group-hover:text-primary transition-colors glitch-hover"
+                data-text={interest.title}
+            >
+                {interest.title}
+            </h3>
             <p className="text-xs text-muted-foreground line-clamp-2">{interest.description}</p>
         </motion.div>
     );
@@ -424,7 +431,12 @@ function InterestModal({
                                         sizes="48px"
                                     />
                                 </div>
-                                <h2 className="text-xl font-bold text-foreground">{interest.modalTitle}</h2>
+                                <h2
+                                    className="text-xl font-bold text-foreground glitch-hover"
+                                    data-text={interest.modalTitle}
+                                >
+                                    {interest.modalTitle}
+                                </h2>
                             </div>
                             <button
                                 onClick={onClose}
@@ -445,27 +457,30 @@ function InterestModal({
                         {interest.links && (
                             <div className="px-6 pb-6 pt-2 border-t border-border mt-2">
                                 <p className="text-sm font-semibold text-foreground mb-4">🎧 Ascolta le mie produzioni:</p>
-                                <div className="flex flex-wrap gap-3">
+                                <div className="grid grid-cols-2 gap-4">
                                     {interest.links.map((link) => (
                                         <a
                                             key={link.label}
                                             href={link.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all hover:scale-105"
+                                            className="interesse-card card-3d flex flex-col items-center justify-center p-4 group transition-all"
                                             style={{
-                                                backgroundColor: `${link.color}15`,
-                                                color: link.color
-                                            }}
+                                                "--primary": link.color
+                                            } as React.CSSProperties}
                                         >
-                                            <Image
-                                                src={link.icon}
-                                                alt={link.label}
-                                                width={24}
-                                                height={24}
-                                                className="object-contain"
-                                            />
-                                            {link.label}
+                                            <div className="relative w-10 h-10 mb-2 transition-transform duration-300 group-hover:scale-110">
+                                                <Image
+                                                    src={link.icon}
+                                                    alt={link.label}
+                                                    fill
+                                                    className="object-contain drop-shadow-md"
+                                                    sizes="40px"
+                                                />
+                                            </div>
+                                            <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                                                {link.label}
+                                            </span>
                                         </a>
                                     ))}
                                 </div>

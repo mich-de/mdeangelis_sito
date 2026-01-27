@@ -23,10 +23,26 @@
   - Removed standard CTA Button.
   - Added custom **Scroll Indicator** (Text + Animated Chevron).
 
+### ⚡ Avant-Garde & Interactivity (Phase 13)
+- **Page Transitions**: Implemented smooth fade/scale transitions between pages using `framer-motion` in `template.tsx`.
+- **Magnetic Micro-interactions**: Added `MagneticButton` component that physically attracts social icons to the cursor with high intensity (0.8 strength).
+- **Glitch Effects**:
+  - Engineered CSS-only `glitch-hover` animation.
+  - Applied to the "ANGELIS" logo text and Interest Card titles for a Cyber/Raw aesthetic.
+
 ### 🛠️ Technical
 - **Clean Build Architecture**:
   - Removed unused temporary scripts.
   - Cleared Next.js cache.
+
+### 🐛 Fixes & Polishing
+- **Localization**:
+  - Alerted by User: Added missing **SoundCloud** link to the Italian version of the Interests section.
+- **UI Refinement**:
+  - Restyled "Music Production" links to match the main **Interest Cards** (Glassmorphism, 3D Tilt, Grid Layout).
+- **Assets**:
+  - Updated **SoundCloud Icon** with a new high-quality transparent version provided by the user.
+  - Updated **Spotify Icon** (v6) with **Smart Green Detection** algorithm to auto-detect logo boundaries and crop perfectly.
 
 ---
 

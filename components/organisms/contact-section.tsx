@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/language-provider";
 import { motion } from "framer-motion";
+import { MagneticButton } from "@/components/atoms/magnetic-button";
 
 const socialLinks = [
     /*{ href: "https://github.com/mdeangelis", icon: "icon_social_github.svg", label: "GitHub" },*/
