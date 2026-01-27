@@ -11,7 +11,7 @@ export function ContactSection() {
     const { t } = useLanguage();
 
     return (
-        <section id="contatti" className="py-20 bg-background relative">
+        <section id="contatti" className="py-20 section-alternate relative">
             <div className="container mx-auto px-6">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}

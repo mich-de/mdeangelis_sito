@@ -497,7 +497,7 @@ export function InterestsSection() {
     };
 
     return (
-        <section id="interests" className="py-24 px-6 section-alternate">
+        <section id="interests" className="py-24 px-6">
             <div className="container mx-auto max-w-6xl">
                 {/* Section Header */}
                 <motion.div

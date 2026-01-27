@@ -161,7 +161,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-secondary text-foreground;
   }
 
   /* Smooth scroll - replaces JS smooth scroll */
@@ -192,6 +192,11 @@
 
   :focus:not(:focus-visible) {
     outline: none;
+  }
+
+  /* Section styling - each section has its own background */
+  section {
+    background-color: var(--background);
   }
 }
 
@@ -416,6 +421,26 @@ h6 {
 
 .accent-underline:hover::after {
   transform: scaleX(1);
+}
+
+/* ========================================
+   SECTION VISUAL SEPARATION
+   Alternating backgrounds for clear separation
+   ======================================== */
+
+/* Default section style - uses main background */
+section {
+  position: relative;
+}
+
+/* Alternate section - uses secondary (body) color for contrast */
+.section-alternate {
+  background-color: var(--secondary) !important;
+}
+
+/* Add subtle top/bottom borders for separation */
+section:not(:first-of-type) {
+  border-top: 1px solid var(--border);
 }
 
 /* ========================================
