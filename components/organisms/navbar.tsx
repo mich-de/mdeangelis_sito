@@ -26,13 +26,16 @@ export function Navbar() {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/10 backdrop-blur-md bg-white/50 dark:bg-black/50 support-backdrop-blur:bg-white/50",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+                "border-b backdrop-blur-xl",
+                "bg-background/80 border-border/50",
+                "dark:bg-background/70 dark:border-border/30",
                 scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"
             )}
         >
             <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="text-xl font-bold tracking-tighter">
+                <Link href="/" className="text-xl font-bold tracking-tighter text-foreground hover:text-primary transition-colors">
                     MDE<span className="font-light">ANGELIS</span>
                 </Link>
 
@@ -51,7 +54,7 @@ export function Navbar() {
                             </li>
                         ))}
                     </ul>
-                    <div className="flex items-center gap-2 border-l pl-4 border-gray-200 dark:border-gray-800">
+                    <div className="flex items-center gap-2 border-l pl-4 border-border">
                         <ThemeToggle />
                         <LanguageSwitch />
                     </div>

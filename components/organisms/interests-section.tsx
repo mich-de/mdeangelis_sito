@@ -49,7 +49,7 @@ export function InterestsSection() {
     return (
         <section id="interests" className="py-20 bg-background relative">
             <div className="container mx-auto px-6">
-                <h2 className="text-4xl md:text-5xl font-black text-center mb-16 tracking-tighter bg-gradient-to-r from-accent via-chart-1 to-chart-3 bg-clip-text text-transparent">
+                <h2 className="heading-2 text-center mb-16">
                     {t("interests.title")}
                 </h2>
 

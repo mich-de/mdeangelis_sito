@@ -89,16 +89,10 @@ export function HeroSection() {
                         style={{ y: y1, opacity }}
                         className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 order-2 lg:order-1"
                     >
-                        <h1 ref={titleRef} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter flex flex-wrap items-center justify-center lg:justify-start gap-1 leading-tight whitespace-nowrap">
-                            <GradientText from="from-accent" to="to-chart-3" className="via-accent/80">
-                                M
-                            </GradientText>
-                            <GradientText from="from-secondary" via="via-muted-foreground" to="to-gray-300" className="opacity-90">
-                                DE
-                            </GradientText>
-                            <span className="font-light text-foreground ml-1 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                                ANGELIS
-                            </span>
+                        <h1 ref={titleRef} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter inline-flex items-baseline justify-center lg:justify-start leading-tight whitespace-nowrap">
+                            <GradientText from="from-accent" to="to-chart-3" className="via-accent/80">M</GradientText>
+                            <GradientText from="from-secondary" via="via-muted-foreground" to="to-gray-300" className="opacity-90">DE</GradientText>
+                            <span className="font-light text-foreground drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">ANGELIS</span>
                         </h1>
 
                         <div className="space-y-4 max-w-2xl">
@@ -128,18 +122,30 @@ export function HeroSection() {
                         style={{ y: y2 }}
                         className="flex justify-center items-center relative order-1 lg:order-2"
                     >
-                        <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px] animate-float perspective-1000">
-                            {/* Blob effect behind logo */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-full blur-3xl animate-pulse-slow mix-blend-screen" />
+                        <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px] animate-float group">
+
+                            {/* Outer Glow Ring */}
+                            <div className="absolute inset-[-20px] rounded-full border-2 border-primary/20 animate-glow-ring" />
+                            <div className="absolute inset-[-40px] rounded-full border border-accent/10 animate-glow-ring" style={{ animationDelay: '1s' }} />
+
+                            {/* Pulsing Halo Background */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-transparent to-accent/30 rounded-full blur-3xl animate-pulse-slow mix-blend-screen" />
+
+                            {/* Secondary Diffuse Glow */}
+                            <div className="absolute inset-[-10%] bg-gradient-radial from-primary/20 to-transparent rounded-full blur-[100px] opacity-60" />
 
                             {/* Relief/Shadow Effect under the logo */}
-                            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-3/4 h-12 bg-black/50 blur-xl rounded-[100%] z-0" />
+                            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-2/3 h-8 bg-black/60 blur-2xl rounded-[100%] z-0" />
 
+                            {/* Logo Image with enhanced shadows */}
                             <img
                                 src="/assets/logo_symbol_transparent.png"
                                 alt="mdeangelis Logo"
-                                className="w-full h-full object-contain relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.5)]"
+                                className="w-full h-full object-contain relative z-10 drop-shadow-[0_25px_50px_rgba(0,0,0,0.6)] group-hover:drop-shadow-[0_30px_60px_rgba(255,159,28,0.3)] transition-all duration-500 group-hover:scale-105"
                             />
+
+                            {/* Shimmer Overlay on Hover */}
+                            <div className="absolute inset-0 z-20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer pointer-events-none" />
                         </div>
                     </motion.div>
                 </div>

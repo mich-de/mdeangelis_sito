@@ -17,7 +17,7 @@ export function ContactSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-black text-center mb-16 tracking-tighter bg-gradient-to-r from-accent via-chart-1 to-chart-3 bg-clip-text text-transparent"
+                    className="heading-2 text-center mb-16"
                 >
                     {t("contact.title")}
                 </motion.h2>
@@ -42,17 +42,7 @@ export function ContactSection() {
                             </div>
                         </GlassCard>
 
-                        <GlassCard className="p-6 flex items-center gap-4 hover:border-primary/50 transition-colors">
-                            <div className="p-3 bg-primary/10 rounded-full">
-                                <Image src="/assets/icon_contact_email.png" width={32} height={32} alt="Email" />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold">{t("contact.emailLabel")}</h3>
-                                <a href="mailto:info@mdeangelis.me" className="text-muted-foreground hover:text-primary transition-colors">
-                                    info@mdeangelis.me
-                                </a>
-                            </div>
-                        </GlassCard>
+
                     </motion.div>
 
                     {/* Social Links */}

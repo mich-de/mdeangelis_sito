@@ -57,86 +57,102 @@
 }
 
 :root {
-  /* Default Light Theme (Inverted from Dark Palette for support) */
-  --background: #FFFFFF;
-  --foreground: #111216;
-  --card: #F5F5F5;
-  --card-foreground: #111216;
+  /* Light Theme - Premium Clean Aesthetic */
+  --background: #FEFEFE;
+  --foreground: #18181B;
+  --card: #FFFFFF;
+  --card-foreground: #18181B;
   --popover: #FFFFFF;
-  --popover-foreground: #111216;
-  --primary: #FF9F1C;
-  --primary-foreground: #111216;
-  --secondary: #D6D6D6;
-  /* Argento Chiaro */
-  --secondary-foreground: #111216;
-  --muted: #E0E0E0;
-  --muted-foreground: #4A4F55;
-  --accent: #FFBF69;
-  /* Albicocca Chiaro */
-  --accent-foreground: #111216;
-  --destructive: #ef4444;
-  --destructive-foreground: #FAFAFA;
-  --border: #D6D6D6;
-  --input: #D6D6D6;
-  --ring: #FF9F1C;
-  --chart-1: #FF9F1C;
-  --chart-2: #FF6B00;
-  --chart-3: #B87611;
-  --chart-4: #FFBF69;
-  --chart-5: #111216;
+  --popover-foreground: #18181B;
+  --primary: #EA580C;
+  /* Orange-600 - vibrant but readable */
+  --primary-foreground: #FFFFFF;
+  --secondary: #F4F4F5;
+  /* Zinc-100 - subtle section bg */
+  --secondary-foreground: #18181B;
+  --muted: #E4E4E7;
+  /* Zinc-200 */
+  --muted-foreground: #71717A;
+  /* Zinc-500 - good contrast */
+  --accent: #C2410C;
+  /* Orange-700 for emphasis */
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E4E4E7;
+  --input: #E4E4E7;
+  --ring: #EA580C;
+  --chart-1: #EA580C;
+  --chart-2: #C2410C;
+  --chart-3: #9A3412;
+  --chart-4: #FB923C;
+  --chart-5: #18181B;
   --radius: 0.625rem;
-  --sidebar: #F5F5F5;
-  --sidebar-foreground: #111216;
-  --sidebar-primary: #FF9F1C;
-  --sidebar-primary-foreground: #111216;
-  --sidebar-accent: #D6D6D6;
-  --sidebar-accent-foreground: #111216;
-  --sidebar-border: #D6D6D6;
-  --sidebar-ring: #FF9F1C;
+
+  /* Light mode specific */
+  --hero-glow: rgba(234, 88, 12, 0.08);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #18181B;
+  --sidebar-primary: #EA580C;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F4F4F5;
+  --sidebar-accent-foreground: #18181B;
+  --sidebar-border: #E4E4E7;
+  --sidebar-ring: #EA580C;
 }
 
 .dark {
-  /* PALETTE: Abstract Geometric Dark */
-  --background: #111216;
-  /* Deep Charcoal */
-  --foreground: #FFFFFF;
-  /* Bianco Puro */
-  --card: #1A1C23;
-  /* A bit lighter than bg for cards */
-  --card-foreground: #FFFFFF;
-  --popover: #111216;
-  --popover-foreground: #FFFFFF;
-  --primary: #FF9F1C;
-  /* Arancione Vivace */
-  --primary-foreground: #111216;
-  --secondary: #4A4F55;
-  /* Slate Scuro */
-  --secondary-foreground: #FFFFFF;
-  --muted: #2A2E35;
-  --muted-foreground: #A0A0A0;
-  /* Grigio Base */
-  --accent: #FF6B00;
-  /* Arancione Intenso */
-  --accent-foreground: #FFFFFF;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #FFFFFF;
-  --border: #4A4F55;
-  /* Slate Scuro */
-  --input: #4A4F55;
-  --ring: #FF9F1C;
-  --chart-1: #FF9F1C;
-  --chart-2: #FF6B00;
-  --chart-3: #B87611;
-  --chart-4: #FFBF69;
-  --chart-5: #A0A0A0;
-  --sidebar: #111216;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #FF9F1C;
-  --sidebar-primary-foreground: #111216;
-  --sidebar-accent: #2A2E35;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #4A4F55;
-  --sidebar-ring: #FF9F1C;
+  /* Dark Theme - Deep Premium Aesthetic */
+  --background: #09090B;
+  /* Near black - Zinc-950 */
+  --foreground: #FAFAFA;
+  /* Zinc-50 */
+  --card: #18181B;
+  /* Zinc-900 - elevated from bg */
+  --card-foreground: #FAFAFA;
+  --popover: #18181B;
+  --popover-foreground: #FAFAFA;
+  --primary: #FB923C;
+  /* Orange-400 - vibrant on dark */
+  --primary-foreground: #09090B;
+  --secondary: #27272A;
+  /* Zinc-800 */
+  --secondary-foreground: #FAFAFA;
+  --muted: #3F3F46;
+  /* Zinc-700 */
+  --muted-foreground: #A1A1AA;
+  /* Zinc-400 */
+  --accent: #F97316;
+  /* Orange-500 - vivid */
+  --accent-foreground: #FAFAFA;
+  --destructive: #991B1B;
+  --destructive-foreground: #FAFAFA;
+  --border: #27272A;
+  /* Zinc-800 */
+  --input: #27272A;
+  --ring: #FB923C;
+  --chart-1: #FB923C;
+  --chart-2: #F97316;
+  --chart-3: #EA580C;
+  --chart-4: #FDBA74;
+  --chart-5: #A1A1AA;
+
+  /* Dark mode specific */
+  --hero-glow: rgba(251, 146, 60, 0.15);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --card-hover-shadow: 0 8px 24px rgba(251, 146, 60, 0.1);
+
+  --sidebar: #09090B;
+  --sidebar-foreground: #FAFAFA;
+  --sidebar-primary: #FB923C;
+  --sidebar-primary-foreground: #09090B;
+  --sidebar-accent: #27272A;
+  --sidebar-accent-foreground: #FAFAFA;
+  --sidebar-border: #27272A;
+  --sidebar-ring: #FB923C;
 }
 
 @layer base {
@@ -147,4 +163,227 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom Animations for Premium Effects */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes glow-ring {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-ring {
+  animation: glow-ring 4s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+  background-size: 200% 100%;
+}
+
+/* ========================================
+   TYPOGRAPHY SYSTEM - Best Practices
+   ======================================== */
+
+/* Base Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+/* H1 - Hero/Title Level */
+.heading-1 {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+/* H2 - Section Titles */
+.heading-2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  background: linear-gradient(135deg,
+      var(--primary) 0%,
+      var(--accent) 40%,
+      var(--muted-foreground) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* H3 - Subsection Titles */
+.heading-3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--foreground);
+}
+
+/* Gradient Text Variant - MDEANGELIS Style */
+.gradient-heading {
+  background: linear-gradient(90deg,
+      var(--primary) 0%,
+      var(--accent) 50%,
+      var(--foreground) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dark mode specific text glow */
+.dark .heading-2 {
+  text-shadow: 0 0 60px rgba(251, 146, 60, 0.2);
+}
+
+.dark .heading-3 {
+  text-shadow: 0 0 20px rgba(250, 250, 250, 0.08);
+}
+
+/* Light mode - subtle shadow for depth */
+:root .heading-2 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   IMPROVED THEME UTILITIES
+   ======================================== */
+
+/* Glass effect that works in both themes */
+.glass-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-card {
+  background: rgba(24, 24, 27, 0.75);
+  border: 1px solid rgba(39, 39, 42, 0.8);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+:root .glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(228, 228, 231, 0.9);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Premium card with hover */
+.premium-card {
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.premium-card:hover {
+  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-2px);
+}
+
+/* Focus states for both themes */
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-ring:focus-visible {
+  outline-color: var(--ring);
+}
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hero glow effect */
+.hero-glow {
+  background: radial-gradient(ellipse at center, var(--hero-glow) 0%, transparent 70%);
+}
+
+/* Section backgrounds */
+.section-alternate {
+  background-color: var(--secondary);
+}
+
+/* Orange accent underline */
+.accent-underline {
+  position: relative;
+}
+
+.accent-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.accent-underline:hover::after {
+  transform: scaleX(1);
 }
