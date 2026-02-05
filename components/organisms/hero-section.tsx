@@ -10,6 +10,68 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import gsap from "gsap";
 
+// Floating shape component
+const FloatingShape = ({
+    type,
+    size,
+    delay,
+    duration,
+    className
+}: {
+    type: "triangle" | "circle" | "square" | "ring";
+    size: number;
+    delay: number;
+    duration: number;
+    className?: string;
+}) => {
+    const shapes = {
+        triangle: (
+            <svg width={size} height={size} viewBox="0 0 100 100" className="fill-current">
+                <polygon points="50,10 90,90 10,90" />
+            </svg>
+        ),
+        circle: (
+            <div
+                className="rounded-full bg-current"
+                style={{ width: size, height: size }}
+            />
+        ),
+        square: (
+            <div
+                className="bg-current rotate-45"
+                style={{ width: size, height: size }}
+            />
+        ),
+        ring: (
+            <div
+                className="rounded-full border-2 border-current"
+                style={{ width: size, height: size }}
+            />
+        ),
+    };
+
+    return (
+        <motion.div
+            className={`absolute ${className}`}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+                opacity: [0.1, 0.4, 0.1],
+                scale: [0.8, 1, 0.8],
+                y: [0, -30, 0],
+                rotate: [0, 180, 360]
+            }}
+            transition={{
+                duration,
+                delay,
+                repeat: Infinity,
+                ease: "easeInOut",
+            }}
+        >
+            {shapes[type]}
+        </motion.div>
+    );
+};
+
 export function HeroSection() {
     const { t } = useLanguage();
     const mousePos = useMousePosition();
@@ -17,6 +79,7 @@ export function HeroSection() {
     const titleRef = useRef<HTMLHeadingElement>(null);
     const orb1Ref = useRef<HTMLDivElement>(null);
     const orb2Ref = useRef<HTMLDivElement>(null);
+    const orb3Ref = useRef<HTMLDivElement>(null);
 
     const { scrollY } = useScroll();
     const y1 = useTransform(scrollY, [0, 500], [0, 200]);
@@ -46,11 +109,17 @@ export function HeroSection() {
                     "-=0.4"
                 );
         }
+
+        // Animate floating shapes entrance
+        gsap.fromTo(".floating-shape",
+            { opacity: 0, scale: 0 },
+            { opacity: 1, scale: 1, duration: 1.5, stagger: 0.15, ease: "elastic.out(1, 0.5)", delay: 0.5 }
+        );
     }, []);
 
     // Parallax Effect for Orbs based on mouse position
     useEffect(() => {
-        if (orb1Ref.current && orb2Ref.current) {
+        if (orb1Ref.current && orb2Ref.current && orb3Ref.current) {
             const x = (mousePos.x / window.innerWidth - 0.5) * 40;
             const y = (mousePos.y / window.innerHeight - 0.5) * 40;
 
@@ -67,6 +136,13 @@ export function HeroSection() {
                 duration: 1.2,
                 ease: "power2.out",
             });
+
+            gsap.to(orb3Ref.current, {
+                x: x * 0.8,
+                y: -y * 0.8,
+                duration: 1.4,
+                ease: "power2.out",
+            });
         }
     }, [mousePos]);
 
@@ -76,11 +152,60 @@ export function HeroSection() {
             className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-10"
             id="home"
         >
-            {/* Background Elements */}
-            <div className="absolute inset-0 overflow-hidden -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background">
-                <div ref={orb1Ref} className="absolute top-1/2 left-3/4 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[200px] opacity-40 mix-blend-screen" />
-                <div ref={orb2Ref} className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[200px] opacity-30 mix-blend-screen" />
+            {/* Animated Mesh Gradient Background */}
+            <div className="absolute inset-0 -z-20">
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 via-background to-zinc-100 dark:from-background dark:via-background dark:to-background" />
+                <div
+                    className="absolute inset-0 opacity-30 animate-mesh-gradient"
+                    style={{
+                        background: `
+                            radial-gradient(at 40% 20%, hsl(var(--primary) / 0.3) 0px, transparent 50%),
+                            radial-gradient(at 80% 0%, hsl(var(--accent) / 0.2) 0px, transparent 50%),
+                            radial-gradient(at 0% 50%, hsl(var(--primary) / 0.2) 0px, transparent 50%),
+                            radial-gradient(at 80% 50%, hsl(var(--accent) / 0.15) 0px, transparent 50%),
+                            radial-gradient(at 0% 100%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
+                            radial-gradient(at 80% 100%, hsl(var(--accent) / 0.2) 0px, transparent 50%),
+                            radial-gradient(at 0% 0%, hsl(var(--chart-3) / 0.1) 0px, transparent 50%)
+                        `,
+                        backgroundSize: '200% 200%',
+                    }}
+                />
             </div>
+
+            {/* Floating Gradient Orbs */}
+            <div className="absolute inset-0 overflow-hidden -z-10">
+                <div ref={orb1Ref} className="absolute top-1/4 left-3/4 -translate-y-1/2 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[150px] opacity-50 mix-blend-screen" />
+                <div ref={orb2Ref} className="absolute bottom-1/4 right-3/4 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[150px] opacity-40 mix-blend-screen" />
+                <div ref={orb3Ref} className="absolute top-3/4 left-1/2 w-[400px] h-[400px] bg-chart-3/10 rounded-full blur-[120px] opacity-35 mix-blend-screen" />
+            </div>
+
+            {/* Floating Geometric Shapes */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none -z-5">
+                {/* Left side shapes */}
+                <FloatingShape type="triangle" size={24} delay={0} duration={8} className="floating-shape top-[15%] left-[5%] text-primary/20" />
+                <FloatingShape type="circle" size={16} delay={0.5} duration={10} className="floating-shape top-[30%] left-[12%] text-accent/25" />
+                <FloatingShape type="ring" size={32} delay={1} duration={12} className="floating-shape top-[55%] left-[8%] text-primary/15" />
+                <FloatingShape type="square" size={12} delay={1.5} duration={9} className="floating-shape top-[75%] left-[15%] text-chart-3/20" />
+
+                {/* Right side shapes */}
+                <FloatingShape type="circle" size={20} delay={0.3} duration={11} className="floating-shape top-[20%] right-[8%] text-accent/20" />
+                <FloatingShape type="triangle" size={18} delay={0.8} duration={9} className="floating-shape top-[45%] right-[5%] text-primary/25" />
+                <FloatingShape type="ring" size={28} delay={1.3} duration={10} className="floating-shape top-[70%] right-[12%] text-chart-3/15" />
+                <FloatingShape type="square" size={14} delay={2} duration={8} className="floating-shape top-[85%] right-[18%] text-accent/20" />
+
+                {/* Center scattered shapes */}
+                <FloatingShape type="circle" size={10} delay={0.7} duration={7} className="floating-shape top-[10%] left-[40%] text-primary/15" />
+                <FloatingShape type="ring" size={20} delay={1.2} duration={11} className="floating-shape top-[85%] left-[35%] text-accent/15" />
+                <FloatingShape type="triangle" size={14} delay={1.8} duration={9} className="floating-shape top-[5%] right-[30%] text-chart-3/20" />
+            </div>
+
+            {/* Noise Texture Overlay */}
+            <div
+                className="absolute inset-0 -z-5 opacity-[0.015] pointer-events-none mix-blend-overlay"
+                style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                }}
+            />
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -91,11 +216,10 @@ export function HeroSection() {
                         className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 order-2 lg:order-1"
                     >
                         <h1 ref={titleRef} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter inline-flex items-baseline justify-center lg:justify-start leading-tight whitespace-nowrap">
-                            <span className="font-sans inline-flex">
-                                <GradientText from="from-accent" to="to-chart-3" className="via-accent/80">M</GradientText>
-                                <GradientText from="from-secondary" via="via-muted-foreground" to="to-gray-300" className="opacity-90">DE</GradientText>
+                            <span className="font-sans inline-flex animate-text-shine">
+                                MDE
                             </span>
-                            <span className="font-display font-light text-foreground drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">ANGELIS</span>
+                            <span className="font-display font-normal animate-text-shine" data-text="ANGELIS">ANGELIS</span>
                         </h1>
 
                         <div className="space-y-4 max-w-2xl">

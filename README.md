@@ -1,6 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MDEANGELIS Portfolio
 
-## Getting Started
+A premium, interactive portfolio website for an IT Professional & Visionary. Built with modern web technologies to deliver a fluid, high-performance experience.
+
+![MDEANGELIS Preview](/assets/logo.jpg)
+
+## 🚀 Technologies
+
+* **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+* **Components**: [shadcn/ui](https://ui.shadcn.com/)
+* **Animations**: [Framer Motion](https://www.framer.com/motion/)
+* **Optimization**: Next.js Image, Font optimization, SEO metadata
+
+## ✨ Key Features
+
+* **Responsive Design**: Fully optimized for Desktop, Tablet, and Mobile.
+* **Dark/Light Mode**: Smooth transition with theme-aware branding and animations.
+* **Interactive UI**:
+  * **Hero Section**: Sparkling text effect, mesh gradients, floating 3D shapes.
+  * **Bento Grid**: Interests section with spotlight hover effects.
+  * **Glassmorphism**: Premium glass cards for stats and details.
+  * **Custom Cursor**: Dual-layer glow effect following the mouse.
+* **Branding**: Consistent "MDEANGELIS" branding (uppercase, sans/display font mix) across Preloader, Navbar, and Footer.
+* **Performance**: Low CLS, fast LCP, and accessible markup.
+
+## 🛠️ Getting Started
 
 First, run the development server:
 
@@ -10,44 +34,24 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploy on Coolify
+## 🏗️ Project Structure
 
-To deploy this Next.js 15 application on Coolify using Nixpacks:
+* `app/`: Next.js App Router structure.
+* `components/`: Atomic design components (atoms, molecules, organisms).
+* `context/`: React Context providers (Theme, Language).
+* `public/assets/`: Static assets (images, icons).
 
-1.  **Create Service**:
-    *   Select "Application" -> "Public GitHub Repository".
-    *   Choose this repository `mich-de/mdeangelis_sito`.
+## 🎨 Branding
 
-2.  **Configuration**:
-    *   **Build Pack**: Select `Nixpacks`.
-    *   **Environment Variables**:
-        *   Key: `NIXPACKS_NODE_VERSION`
-        *   Value: `22`
-    *   **Commands (CRITICAL)**:
-        *   **Build Command**: Leave EMPTY.
-        *   **Install Command**: Leave EMPTY.
-        *   **Start Command**: Leave EMPTY.
-        *   *Note: Nixpacks automatically detects `package.json` and handles the build/start process.*
-    *   **Docker Registry**: Leave EMPTY.
-    *   **Publish Directory**: Leave EMPTY (or `.next` if required, but usually auto-detected).
+The branding uses a distinct typographic mix:
 
-3.  **Deploy**:
-    *   Click "Save".
-    *   Click "Deploy" (or "Redeploy").
+* **MDE**: `font-sans` (Bold/Unitext)
+* **ANGELIS**: `font-display` (Light/Kamerik)
+* **Effect**: "Sparkling" shine animation (Silver ripple on White/Dark text).
 
-The application uses `output: "standalone"` in `next.config.ts` for optimized Docker builds.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
+© 2026 MDEANGELIS. All rights reserved.

@@ -337,7 +337,18 @@ const interestData = {
 
 type Interest = typeof interestData.it[0];
 
-// Interest Card Component
+// Bento grid size mapping - larger cards for featured items
+const getBentoSize = (index: number): string => {
+    // First 4 items are "featured" with larger sizes
+    if (index === 0) return "col-span-2 row-span-2"; // Informatica - large
+    if (index === 1) return "col-span-1 row-span-2"; // Tecnologia - tall
+    if (index === 2) return "col-span-1 row-span-1"; // Programmazione
+    if (index === 3) return "col-span-2 row-span-1"; // AI - wide
+    if (index === 7) return "col-span-2 row-span-1"; // Musica - wide (has links)
+    return "col-span-1 row-span-1"; // Standard
+};
+
+// Interest Card Component with Spotlight Effect
 function InterestCard({
     interest,
     onClick,
@@ -347,34 +358,80 @@ function InterestCard({
     onClick: () => void;
     index: number;
 }) {
+    const bentoSize = getBentoSize(index);
+    const isLarge = bentoSize.includes("col-span-2") || bentoSize.includes("row-span-2");
+
+    // Handle mouse move for spotlight effect
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        e.currentTarget.style.setProperty("--mouse-x", `${x}%`);
+        e.currentTarget.style.setProperty("--mouse-y", `${y}%`);
+    };
+
     return (
         <motion.div
-            className="interesse-card p-5 card-3d flex flex-col items-center text-center group"
+            className={`${bentoSize} interesse-card spotlight-card p-5 card-3d flex flex-col items-center justify-center text-center group cursor-pointer relative overflow-hidden`}
             onClick={onClick}
-            whileHover={{ scale: 1.03 }}
+            onMouseMove={handleMouseMove}
+            whileHover={{ scale: 1.02, y: -4 }}
             whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{
+                duration: 0.5,
+                delay: index * 0.04,
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+            }}
         >
-            {/* 3D Icon */}
-            <div className="relative w-16 h-16 mb-4 transition-transform duration-300 group-hover:scale-110">
+            {/* Gradient border on hover */}
+            <div className="absolute inset-0 rounded-[inherit] p-px bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/30 group-hover:via-accent/20 group-hover:to-primary/30 transition-all duration-500 -z-10" />
+
+            {/* Inner glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:to-accent/5 transition-all duration-500 rounded-[inherit]" />
+
+            {/* 3D Icon with enhanced animation */}
+            <motion.div
+                className={`relative ${isLarge ? 'w-20 h-20 mb-5' : 'w-14 h-14 mb-3'} transition-all duration-300`}
+                whileHover={{ rotate: [0, -5, 5, 0], scale: 1.15 }}
+                transition={{ duration: 0.5 }}
+            >
                 <Image
                     src={interest.icon}
                     alt={interest.title}
                     fill
-                    className="object-contain drop-shadow-lg"
-                    sizes="64px"
+                    className="object-contain drop-shadow-lg group-hover:drop-shadow-[0_8px_16px_rgba(251,146,60,0.3)] transition-all duration-300"
+                    sizes={isLarge ? "80px" : "56px"}
                 />
-            </div>
+            </motion.div>
+
             <h3
-                className="text-base font-semibold text-foreground mb-1 group-hover:text-primary transition-colors glitch-hover"
-                data-text={interest.title}
+                className={`${isLarge ? 'text-lg' : 'text-base'} font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300`}
             >
                 {interest.title}
             </h3>
-            <p className="text-xs text-muted-foreground line-clamp-2">{interest.description}</p>
+            <p className={`${isLarge ? 'text-sm' : 'text-xs'} text-muted-foreground line-clamp-2 group-hover:text-muted-foreground/80 transition-colors`}>
+                {interest.description}
+            </p>
+
+            {/* "Click to expand" indicator for large cards */}
+            {isLarge && (
+                <motion.div
+                    className="absolute bottom-3 right-3 flex items-center gap-1 text-xs text-muted-foreground/50 group-hover:text-primary/70 transition-colors"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                >
+                    <span className="hidden sm:inline">Scopri di più</span>
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                </motion.div>
+            )}
         </motion.div>
     );
 }
@@ -542,8 +599,8 @@ export function InterestsSection() {
                     </p>
                 </motion.div>
 
-                {/* Interest Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4">
+                {/* Bento Interest Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-[minmax(140px,auto)]">
                     {interests.map((interest, index) => (
                         <InterestCard
                             key={interest.id}

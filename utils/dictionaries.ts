@@ -13,7 +13,7 @@ export const en = {
         quote: "Technology is not just code, it's the language with which we write the future.",
         badge: "Visionary",
         bio: {
-            p1: "Hi! I am mdeangelis, a digital explorer living at the intersection of innovation and creativity.",
+            p1: "Hi! I am MDEANGELIS, a digital explorer living at the intersection of innovation and creativity.",
             p2: "My mission is simple: to understand the 'why' behind every bit. From software architecture to AI, I approach every challenge with the curiosity of a child and the rigor of an engineer.",
             p3: "But I don't live by code alone. I find inspiration in the harmonies of music, in the colors of distant travels, and in the depth of a good conversation over a glass of wine.",
         },
@@ -70,7 +70,7 @@ export const it: Dictionary = {
         quote: "La tecnologia non è solo codice, è il linguaggio con cui scriviamo il futuro.",
         badge: "Visionario",
         bio: {
-            p1: "Ciao! Sono mdeangelis, un esploratore digitale che vive all'intersezione tra innovazione e creatività.",
+            p1: "Ciao! Sono MDEANGELIS, un esploratore digitale che vive all'intersezione tra innovazione e creatività.",
             p2: "La mia missione è semplice: capire il 'perché' dietro ogni bit. Dall'architettura software all'Intelligenza Artificiale, approccio ogni sfida con la curiosità di un bambino e il rigore di un ingegnere.",
             p3: "Ma non vivo di solo codice. Trovo ispirazione nelle armonie della musica, nei colori di viaggi lontani e nella profondità di una buona conversazione davanti a un calice di vino.",
         },

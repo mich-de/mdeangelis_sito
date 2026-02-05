@@ -155,6 +155,18 @@
   --sidebar-accent-foreground: #FAFAFA;
   --sidebar-border: #27272A;
   --sidebar-ring: #FB923C;
+
+  --shine-base: #FFFFFF;
+  --shine-accent: #94a3b8;
+}
+
+@layer base {
+  :root {
+    --shine-base: #18181B;
+    /* Dark Text for Light Mode */
+    --shine-accent: #334155;
+    /* Darker Shine for Light Mode */
+  }
 }
 
 @layer base {
@@ -268,6 +280,26 @@
 .animate-shimmer {
   animation: shimmer 3s linear infinite;
   background-size: 200% 100%;
+}
+
+@keyframes text-shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.animate-text-shine {
+  background: linear-gradient(to right,
+      var(--shine-base) 0%,
+      var(--shine-accent) 20%,
+      var(--shine-base) 40%,
+      var(--shine-base) 100%);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 3s linear infinite;
 }
 
 /* ========================================
@@ -660,4 +692,228 @@ button:active,
 
 .modal-body p:last-child {
   margin-bottom: 0;
+}
+
+/* ========================================
+   BENTO GRID LAYOUT
+   Asymmetric grid for modern card layouts
+   ======================================== */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(140px, auto);
+  gap: 1rem;
+}
+
+.bento-grid .bento-item:nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento-grid .bento-item:nth-child(5) {
+  grid-column: span 2;
+}
+
+.bento-grid .bento-item:nth-child(8) {
+  grid-column: span 2;
+}
+
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bento-grid .bento-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(120px, auto);
+  }
+
+  .bento-grid .bento-item:nth-child(1),
+  .bento-grid .bento-item:nth-child(5),
+  .bento-grid .bento-item:nth-child(8) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+/* ========================================
+   MESH GRADIENT ANIMATION
+   Animated background gradient effect
+   ======================================== */
+
+@keyframes mesh-gradient {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-mesh-gradient {
+  background-size: 400% 400%;
+  animation: mesh-gradient 15s ease infinite;
+}
+
+/* ========================================
+   SPOTLIGHT CARD EFFECT
+   Cursor-following highlight on cards
+   ======================================== */
+
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(251, 146, 60, 0.1),
+      transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   TEXT REVEAL ANIMATION
+   Staggered text entrance effect
+   ======================================== */
+
+@keyframes text-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotateX(-10deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.text-reveal {
+  animation: text-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* ========================================
+   GLOW BUTTON EFFECT
+   Pulsing glow around buttons
+   ======================================== */
+
+.glow-button {
+  position: relative;
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  border-radius: inherit;
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.glow-button:hover::before {
+  opacity: 0.6;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* ========================================
+   WAVE SEPARATOR
+   SVG wave divider for sections
+   ======================================== */
+
+.wave-separator {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+}
+
+.wave-separator svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ========================================
+   FLOATING 3D SHAPES
+   Subtle decorative elements
+   ======================================== */
+
+@keyframes float-3d {
+
+  0%,
+  100% {
+    transform: translateY(0) rotateX(0) rotateY(0);
+  }
+
+  25% {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotateX(0) rotateY(10deg);
+  }
+
+  75% {
+    transform: translateY(-10px) rotateX(-5deg) rotateY(5deg);
+  }
+}
+
+.animate-float-3d {
+  animation: float-3d 8s ease-in-out infinite;
+}
+
+/* ========================================
+   NOISE TEXTURE OVERLAY
+   Subtle grain for premium feel
+   ======================================== */
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
