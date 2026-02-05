@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useScrollDirection } from "@/hooks/use-scroll-direction";
 import { cn } from "@/lib/utils";
 import { LanguageSwitch } from "@/components/molecules/language-switch";
 import { ThemeToggle } from "@/components/atoms/theme-toggle";
@@ -14,10 +13,19 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 export function Navbar() {
-    const scrollDirection = useScrollDirection();
+    const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const { t } = useLanguage();
+
+    // Handle scroll for transparency effect
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const navItems = [
         { label: t("nav.home"), href: "#home", id: "home", icon: "icon_menu_home.png" },
@@ -50,11 +58,10 @@ export function Navbar() {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                "border-b backdrop-blur-xl",
-                "bg-background/80 border-border/50",
-                "dark:bg-background/70 dark:border-border/30",
-                scrollDirection === "down" ? "-translate-y-full" : "translate-y-0"
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
+                isScrolled
+                    ? "bg-background/80 border-border/50 backdrop-blur-xl shadow-sm dark:bg-background/70 dark:border-border/30"
+                    : "bg-transparent border-transparent"
             )}
         >
             <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
