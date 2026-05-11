@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { SpotifyIcon, AppleMusicIcon, YouTubeIcon, SoundCloudIcon } from "@/components/atoms/brand-icons";
 import { useLanguage } from "@/context/language-provider";
 
 // Interest data - using custom 3D icons from /assets/
@@ -337,6 +336,9 @@ const interestData = {
 
 type Interest = typeof interestData.it[0];
 
+const expandText = (isIt: boolean) => isIt ? "Scopri di più" : "Discover more";
+const listenText = (isIt: boolean) => isIt ? "Ascolta le mie produzioni:" : "Listen to my productions:";
+
 // Bento grid size mapping - larger cards for featured items
 const getBentoSize = (index: number): string => {
     // First 4 items are "featured" with larger sizes
@@ -352,11 +354,13 @@ const getBentoSize = (index: number): string => {
 function InterestCard({
     interest,
     onClick,
-    index
+    index,
+    isIt
 }: {
     interest: Interest;
     onClick: () => void;
     index: number;
+    isIt: boolean;
 }) {
     const bentoSize = getBentoSize(index);
     const isLarge = bentoSize.includes("col-span-2") || bentoSize.includes("row-span-2");
@@ -426,7 +430,7 @@ function InterestCard({
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
                 >
-                    <span className="hidden sm:inline">Scopri di più</span>
+                    <span className="hidden sm:inline">{expandText(isIt)}</span>
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -440,11 +444,13 @@ function InterestCard({
 function InterestModal({
     isOpen,
     onClose,
-    interest
+    interest,
+    isIt
 }: {
     isOpen: boolean;
     onClose: () => void;
     interest: Interest | null;
+    isIt: boolean;
 }) {
     if (!interest) return null;
 
@@ -467,14 +473,15 @@ function InterestModal({
                         exit={{ opacity: 0 }}
                     />
 
-                    {/* Modal Content */}
+                    {/* Modal Content — dramatic entrance */}
                     <motion.div
-                        className="relative z-10 w-full max-w-lg max-h-[85vh] overflow-y-auto bg-card border border-border rounded-2xl shadow-2xl"
-                        initial={{ scale: 0.9, y: 20, opacity: 0 }}
-                        animate={{ scale: 1, y: 0, opacity: 1 }}
-                        exit={{ scale: 0.9, y: 20, opacity: 0 }}
-                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                        className="relative z-10 w-full max-w-lg max-h-[85vh] overflow-y-auto bg-card border border-border/50 rounded-2xl shadow-2xl"
+                        initial={{ scale: 0.7, rotateY: -15, y: 40, opacity: 0 }}
+                        animate={{ scale: 1, rotateY: 0, y: 0, opacity: 1 }}
+                        exit={{ scale: 0.7, rotateY: 15, y: 40, opacity: 0 }}
+                        transition={{ type: "spring", damping: 20, stiffness: 260 }}
                         onClick={(e) => e.stopPropagation()}
+                        style={{ perspective: 1000 }}
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between p-6 border-b border-border">
@@ -513,7 +520,7 @@ function InterestModal({
                         {/* Music Links (if applicable) */}
                         {interest.links && (
                             <div className="px-6 pb-6 pt-2 border-t border-border mt-2">
-                                <p className="text-sm font-semibold text-foreground mb-4">🎧 Ascolta le mie produzioni:</p>
+                                <p className="text-sm font-semibold text-foreground mb-4">🎧 {listenText(isIt)}</p>
                                 <div className="grid grid-cols-2 gap-4">
                                     {interest.links.map((link) => (
                                         <a
@@ -556,17 +563,22 @@ export function InterestsSection() {
     const [selectedInterest, setSelectedInterest] = useState<Interest | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const interests = language === "it" ? interestData.it : interestData.en;
+    const isIt = language === "it";
+    const interests = isIt ? interestData.it : interestData.en;
+    const itxt = { title: isIt ? "I Miei Interessi" : "My Interests", desc: isIt ? "Passioni che alimentano la mia creatività e guidano il mio percorso professionale e personale." : "Passions that fuel my creativity and guide my professional and personal journey." };
+
+    useEffect(() => {
+        document.body.style.overflow = isModalOpen ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [isModalOpen]);
 
     const openModal = (interest: Interest) => {
         setSelectedInterest(interest);
         setIsModalOpen(true);
-        document.body.style.overflow = "hidden";
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
-        document.body.style.overflow = "";
     };
 
     return (
@@ -589,13 +601,11 @@ export function InterestsSection() {
                             className="object-contain"
                         />
                         <h2 className="heading-2">
-                            {language === "it" ? "I Miei Interessi" : "My Interests"}
+                            {itxt.title}
                         </h2>
                     </div>
                     <p className="text-muted-foreground max-w-2xl mx-auto">
-                        {language === "it"
-                            ? "Passioni che alimentano la mia creatività e guidano il mio percorso professionale e personale."
-                            : "Passions that fuel my creativity and guide my professional and personal journey."}
+                        {itxt.desc}
                     </p>
                 </motion.div>
 
@@ -607,6 +617,7 @@ export function InterestsSection() {
                             interest={interest}
                             onClick={() => openModal(interest)}
                             index={index}
+                            isIt={isIt}
                         />
                     ))}
                 </div>
@@ -617,6 +628,7 @@ export function InterestsSection() {
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 interest={selectedInterest}
+                isIt={isIt}
             />
         </section>
     );

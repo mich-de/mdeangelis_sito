@@ -28,6 +28,9 @@ const GradientOrb = ({ className, delay = 0 }: { className?: string; delay?: num
 
 export function ContactSection() {
     const { language } = useLanguage();
+    const txt = language === "it"
+        ? { badge: "\uD83D\uDCC8 Connettiti", title: "Restiamo in Contatto", desc: "Seguimi sui social per restare aggiornato sui miei progetti e interessi.", follow: "Seguimi" }
+        : { badge: "\uD83D\uDCC8 Connect", title: "Let's Connect", desc: "Follow me on social media to stay updated on my projects and interests.", follow: "Follow me" };
     const sectionRef = useRef<HTMLElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
@@ -65,14 +68,15 @@ export function ContactSection() {
             id="contatti"
             className="relative px-6 overflow-hidden"
         >
-            {/* Background Effects */}
+            {/* Background Effects — bigger, brighter */}
             <div className="absolute inset-0 -z-10">
-                <GradientOrb className="w-[500px] h-[500px] bg-primary/30 top-0 left-1/4" delay={0} />
-                <GradientOrb className="w-[400px] h-[400px] bg-accent/30 bottom-0 right-1/4" delay={0.3} />
+                <GradientOrb className="w-[700px] h-[700px] bg-primary/40 top-0 left-1/4" delay={0} />
+                <GradientOrb className="w-[600px] h-[600px] bg-accent/40 bottom-0 right-1/4" delay={0.3} />
+                <GradientOrb className="w-[500px] h-[500px] bg-chart-3/30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={0.6} />
             </div>
 
             {/* Decorative grid lines */}
-            <div className="absolute inset-0 -z-5 opacity-[0.02]">
+            <div className="absolute inset-0 -z-[5] opacity-[0.02]">
                 <div className="absolute inset-0"
                     style={{
                         backgroundImage: `
@@ -99,19 +103,17 @@ export function ContactSection() {
                         viewport={{ once: true }}
                         className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium"
                     >
-                        {language === "it" ? "📬 Connettiti" : "📬 Connect"}
+                        {txt.badge}
                     </motion.span>
 
                     <h2
                         ref={titleRef}
                         className="heading-2 mb-4 bg-gradient-to-r from-foreground via-primary to-foreground bg-[length:200%_100%] bg-clip-text"
                     >
-                        {language === "it" ? "Restiamo in Contatto" : "Let's Connect"}
+                        {txt.title}
                     </h2>
                     <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-                        {language === "it"
-                            ? "Seguimi sui social per restare aggiornato sui miei progetti e interessi."
-                            : "Follow me on social media to stay updated on my projects and interests."}
+                        {txt.desc}
                     </p>
                 </motion.div>
 
@@ -129,15 +131,15 @@ export function ContactSection() {
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group relative flex items-center gap-4 px-8 py-5 rounded-2xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1"
+                                className="group relative flex items-center gap-4 px-8 py-5 rounded-2xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/60 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-[1.02]"
                             >
                                 {/* Spotlight effect */}
                                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                     <div className={`absolute inset-0 bg-gradient-to-r ${social.color} opacity-5`} />
                                 </div>
 
-                                {/* Glow ring on hover */}
-                                <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
+                                {/* Glow ring on hover — bigger, brighter */}
+                                <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-accent/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-500 -z-10" />
 
                                 <div className="relative z-10 flex items-center gap-4">
                                     <div className="p-2 rounded-xl bg-background/50 border border-border/50 group-hover:border-primary/30 transition-colors">
@@ -154,7 +156,7 @@ export function ContactSection() {
                                             {social.label}
                                         </span>
                                         <span className="text-xs text-muted-foreground">
-                                            {language === "it" ? "Seguimi" : "Follow me"}
+                                            {txt.follow}
                                         </span>
                                     </div>
                                 </div>

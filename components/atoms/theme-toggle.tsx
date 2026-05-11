@@ -1,16 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 
-export function ThemeToggle() {
-    const { theme, setTheme, resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
+function useHydrated() {
+    return useSyncExternalStore(
+        () => () => { },
+        () => true,
+        () => false
+    );
+}
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+export function ThemeToggle() {
+    const { setTheme, resolvedTheme } = useTheme();
+    const mounted = useHydrated();
 
     if (!mounted) {
         return (

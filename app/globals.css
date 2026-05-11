@@ -266,7 +266,7 @@
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
 .animate-glow-ring {
@@ -560,7 +560,7 @@ button:active,
 }
 
 .card-3d:hover {
-  transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) scale3d(1.02, 1.02, 1.02);
+  transform: perspective(800px) rotateX(-4deg) rotateY(4deg) scale3d(1.04, 1.04, 1.04);
   box-shadow: var(--card-hover-shadow);
 }
 
@@ -584,10 +584,11 @@ button:active,
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(var(--primary), 0.15) 0%,
-      transparent 60%);
+      rgba(251, 146, 60, 0.25) 0%,
+      rgba(251, 146, 60, 0.08) 40%,
+      transparent 65%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
 }
 
@@ -596,13 +597,13 @@ button:active,
 }
 
 .interesse-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   border-color: var(--primary);
 }
 
 .dark .interesse-card:hover {
-  box-shadow: 0 12px 40px rgba(251, 146, 60, 0.1);
+  box-shadow: 0 20px 60px rgba(251, 146, 60, 0.15);
 }
 
 /* ========================================
@@ -763,12 +764,12 @@ button:active,
 
 .animate-mesh-gradient {
   background-size: 400% 400%;
-  animation: mesh-gradient 15s ease infinite;
+  animation: mesh-gradient 10s ease infinite;
 }
 
 /* ========================================
-   SPOTLIGHT CARD EFFECT
-   Cursor-following highlight on cards
+   SPOTLIGHT CARD EFFECT — AMPED
+   Wider radius, brighter center
    ======================================== */
 
 .spotlight-card {
@@ -780,11 +781,12 @@ button:active,
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(251, 146, 60, 0.1),
-      transparent 40%);
+  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(251, 146, 60, 0.18) 0%,
+      rgba(251, 146, 60, 0.05) 40%,
+      transparent 60%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
   z-index: 1;
 }

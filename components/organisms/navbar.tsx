@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { LanguageSwitch } from "@/components/molecules/language-switch";
@@ -27,12 +27,12 @@ export function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const navItems = [
+    const navItems = useMemo(() => [
         { label: t("nav.home"), href: "#home", id: "home", icon: "icon_menu_home.png" },
         { label: t("nav.about"), href: "#about", id: "about", icon: "icon_menu_about.png" },
         { label: t("nav.interests"), href: "#interests", id: "interests", icon: "icon_menu_interests.png" },
         { label: t("nav.contact"), href: "#contatti", id: "contatti", icon: "icon_menu_contact.png" },
-    ];
+    ], [t]);
 
     // Track active section
     useEffect(() => {
@@ -53,7 +53,7 @@ export function Navbar() {
         });
 
         return () => observer.disconnect();
-    }, []);
+    }, [navItems]);
 
     return (
         <header

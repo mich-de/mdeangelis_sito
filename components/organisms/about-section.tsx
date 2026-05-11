@@ -84,29 +84,31 @@ export function AboutSection() {
                             ].map((stat, index) => (
                                 <motion.div
                                     key={index}
-                                    className="text-center px-6 py-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 group"
+                                    className="text-center px-6 py-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group relative overflow-hidden"
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: stat.delay }}
-                                    whileHover={{ y: -2 }}
+                                    whileHover={{ y: -4, scale: 1.03 }}
                                 >
+                                    {/* Glow on hover */}
+                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-primary/20 to-transparent blur-xl" />
                                     {typeof stat.target === "number" ? (
                                         <AnimatedCounter
                                             target={stat.target}
                                             suffix={stat.suffix}
-                                            className="block text-3xl md:text-4xl font-bold text-primary group-hover:scale-110 transition-transform"
+                                            className="block text-3xl md:text-4xl font-bold text-primary group-hover:scale-125 transition-transform relative z-10"
                                         />
                                     ) : (
                                         <motion.span
-                                            className="block text-3xl md:text-4xl font-bold text-primary"
-                                            animate={{ rotate: [0, 5, -5, 0] }}
-                                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                                            className="block text-3xl md:text-4xl font-bold text-primary relative z-10"
+                                            animate={{ rotate: [0, 8, -8, 0], scale: [1, 1.1, 1] }}
+                                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 2 }}
                                         >
                                             {stat.target}
                                         </motion.span>
                                     )}
-                                    <span className="text-xs md:text-sm text-muted-foreground mt-1 block">{stat.label}</span>
+                                    <span className="text-xs md:text-sm text-muted-foreground mt-1 block relative z-10">{stat.label}</span>
                                 </motion.div>
                             ))}
                         </div>
@@ -120,8 +122,8 @@ export function AboutSection() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="space-y-6"
                     >
-                        <GlassCard className="p-8 border-l-4 border-l-primary bg-background/40">
-                            <p className="text-xl font-medium italic text-foreground/90 font-display">"{t("about.quote")}"</p>
+                        <GlassCard className="p-10 border-l-[6px] border-l-primary bg-gradient-to-br from-primary/[0.08] to-transparent">
+                            <p className="text-2xl font-medium italic text-foreground font-display leading-relaxed">&ldquo;{t("about.quote")}&rdquo;</p>
                         </GlassCard>
 
                         <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">

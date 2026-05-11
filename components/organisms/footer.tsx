@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const footerLinks = [
     { href: "#home", labelIt: "Home", labelEn: "Home" },
     { href: "#about", labelIt: "Chi Sono", labelEn: "About" },
-    { href: "#interessi", labelIt: "Interessi", labelEn: "Interests" },
+    { href: "#interests", labelIt: "Interessi", labelEn: "Interests" },
     { href: "#contatti", labelIt: "Contatti", labelEn: "Contact" },
 ];
 

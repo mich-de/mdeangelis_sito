@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export function Preloader() {
     const [isLoading, setIsLoading] = useState(true);
-    const { t } = useLanguage();
+    useLanguage();
 
     useEffect(() => {
         // Prevent scrolling while loading
