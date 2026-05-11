@@ -153,7 +153,7 @@ export function HeroSection() {
         >
             {/* Animated Mesh Gradient Background */}
             <div className="absolute inset-0 -z-20">
-                <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 via-background to-zinc-100 dark:from-background dark:via-background dark:to-background" />
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/50 via-background to-secondary/30" />
                 <div
                     className="absolute inset-0 opacity-30 animate-mesh-gradient"
                     style={{
@@ -173,9 +173,9 @@ export function HeroSection() {
 
             {/* Floating Gradient Orbs — bigger, louder */}
             <div className="absolute inset-0 overflow-hidden -z-10">
-                <div ref={orb1Ref} className="absolute top-1/4 left-3/4 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[200px] opacity-60 mix-blend-screen" />
-                <div ref={orb2Ref} className="absolute bottom-1/4 right-3/4 w-[700px] h-[700px] bg-accent/20 rounded-full blur-[200px] opacity-50 mix-blend-screen" />
-                <div ref={orb3Ref} className="absolute top-3/4 left-1/2 w-[600px] h-[600px] bg-chart-3/15 rounded-full blur-[180px] opacity-45 mix-blend-screen" />
+                <div ref={orb1Ref} className="absolute top-1/4 left-3/4 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[200px] opacity-70 mix-blend-screen" style={{ background: 'radial-gradient(circle, var(--hero-orb-primary) 0%, transparent 70%)' }} />
+                <div ref={orb2Ref} className="absolute bottom-1/4 right-3/4 w-[700px] h-[700px] rounded-full blur-[200px] opacity-60 mix-blend-screen" style={{ background: 'radial-gradient(circle, var(--hero-orb-accent) 0%, transparent 70%)' }} />
+                <div ref={orb3Ref} className="absolute top-3/4 left-1/2 w-[600px] h-[600px] rounded-full blur-[180px] opacity-55 mix-blend-screen" style={{ background: 'radial-gradient(circle, var(--hero-orb-chart) 0%, transparent 70%)' }} />
             </div>
 
             {/* Floating Geometric Shapes */}

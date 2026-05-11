@@ -59,114 +59,106 @@
 }
 
 :root {
-  /* Light Theme - Premium Clean Aesthetic */
-  --background: #FEFEFE;
-  --foreground: #18181B;
+  /* LIGHT — Warm Editorial */
+  --background: #FAF8F5;
+  --foreground: #1C1A17;
   --card: #FFFFFF;
-  --card-foreground: #18181B;
+  --card-foreground: #1C1A17;
   --popover: #FFFFFF;
-  --popover-foreground: #18181B;
-  --primary: #EA580C;
-  /* Orange-600 - vibrant but readable */
+  --popover-foreground: #1C1A17;
+  --primary: #D97A00;
   --primary-foreground: #FFFFFF;
-  --secondary: #F4F4F5;
-  /* Zinc-100 - subtle section bg */
-  --secondary-foreground: #18181B;
-  --muted: #E4E4E7;
-  /* Zinc-200 */
-  --muted-foreground: #71717A;
-  /* Zinc-500 - good contrast */
-  --accent: #C2410C;
-  /* Orange-700 for emphasis */
+  --secondary: #F0EDE6;
+  --secondary-foreground: #1C1A17;
+  --muted: #E5E0D6;
+  --muted-foreground: #7A7874;
+  --accent: #B86500;
   --accent-foreground: #FFFFFF;
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
-  --border: #E4E4E7;
-  --input: #E4E4E7;
-  --ring: #EA580C;
-  --chart-1: #EA580C;
-  --chart-2: #C2410C;
-  --chart-3: #9A3412;
-  --chart-4: #FB923C;
-  --chart-5: #18181B;
+  --border: #E5E0D6;
+  --input: #E5E0D6;
+  --ring: #D97A00;
+  --chart-1: #D97A00;
+  --chart-2: #B86500;
+  --chart-3: #9A5A00;
+  --chart-4: #F59E0B;
+  --chart-5: #1C1A17;
   --radius: 0.625rem;
 
-  /* Light mode specific */
-  --hero-glow: rgba(234, 88, 12, 0.08);
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --theme-glow: rgba(217, 122, 0, 0.06);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --card-hover-shadow: 0 8px 30px rgba(217, 122, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(229, 224, 214, 0.6);
+  --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+
+  --hero-orb-primary: rgba(217, 122, 0, 0.08);
+  --hero-orb-accent: rgba(184, 101, 0, 0.06);
+  --hero-orb-chart: rgba(154, 90, 0, 0.05);
+
+  --shine-base: #D97A00;
+  --shine-accent: #B86500;
 
   --sidebar: #FFFFFF;
-  --sidebar-foreground: #18181B;
-  --sidebar-primary: #EA580C;
+  --sidebar-foreground: #1C1A17;
+  --sidebar-primary: #D97A00;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F4F4F5;
-  --sidebar-accent-foreground: #18181B;
-  --sidebar-border: #E4E4E7;
-  --sidebar-ring: #EA580C;
+  --sidebar-accent: #F0EDE6;
+  --sidebar-accent-foreground: #1C1A17;
+  --sidebar-border: #E5E0D6;
+  --sidebar-ring: #D97A00;
 }
 
 .dark {
-  /* Dark Theme - Deep Premium Aesthetic */
-  --background: #09090B;
-  /* Near black - Zinc-950 */
-  --foreground: #FAFAFA;
-  /* Zinc-50 */
-  --card: #18181B;
-  /* Zinc-900 - elevated from bg */
-  --card-foreground: #FAFAFA;
-  --popover: #18181B;
-  --popover-foreground: #FAFAFA;
-  --primary: #FB923C;
-  /* Orange-400 - vibrant on dark */
-  --primary-foreground: #09090B;
-  --secondary: #27272A;
-  /* Zinc-800 */
-  --secondary-foreground: #FAFAFA;
-  --muted: #3F3F46;
-  /* Zinc-700 */
-  --muted-foreground: #A1A1AA;
-  /* Zinc-400 */
-  --accent: #F97316;
-  /* Orange-500 - vivid */
-  --accent-foreground: #FAFAFA;
-  --destructive: #991B1B;
-  --destructive-foreground: #FAFAFA;
-  --border: #27272A;
-  /* Zinc-800 */
-  --input: #27272A;
-  --ring: #FB923C;
-  --chart-1: #FB923C;
-  --chart-2: #F97316;
-  --chart-3: #EA580C;
-  --chart-4: #FDBA74;
-  --chart-5: #A1A1AA;
+  /* DARK — Noir Luxe */
+  --background: #070708;
+  --foreground: #EDE8E2;
+  --card: #121214;
+  --card-foreground: #EDE8E2;
+  --popover: #121214;
+  --popover-foreground: #EDE8E2;
+  --primary: #FF8C42;
+  --primary-foreground: #070708;
+  --secondary: #1A1A1C;
+  --secondary-foreground: #EDE8E2;
+  --muted: #2C2A28;
+  --muted-foreground: #8B8884;
+  --accent: #E67A2E;
+  --accent-foreground: #070708;
+  --destructive: #7F1D1D;
+  --destructive-foreground: #EDE8E2;
+  --border: #2C2A28;
+  --input: #2C2A28;
+  --ring: #FF8C42;
+  --chart-1: #FF8C42;
+  --chart-2: #E67A2E;
+  --chart-3: #CC6622;
+  --chart-4: #FFB07A;
+  --chart-5: #8B8884;
 
-  /* Dark mode specific */
-  --hero-glow: rgba(251, 146, 60, 0.15);
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --card-hover-shadow: 0 8px 24px rgba(251, 146, 60, 0.1);
+  --theme-glow: rgba(255, 140, 66, 0.12);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --card-hover-shadow: 0 12px 40px rgba(255, 140, 66, 0.08), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --glass-bg: rgba(18, 18, 20, 0.75);
+  --glass-border: rgba(44, 42, 40, 0.6);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 
-  --sidebar: #09090B;
-  --sidebar-foreground: #FAFAFA;
-  --sidebar-primary: #FB923C;
-  --sidebar-primary-foreground: #09090B;
-  --sidebar-accent: #27272A;
-  --sidebar-accent-foreground: #FAFAFA;
-  --sidebar-border: #27272A;
-  --sidebar-ring: #FB923C;
+  --hero-orb-primary: rgba(255, 140, 66, 0.2);
+  --hero-orb-accent: rgba(230, 122, 46, 0.15);
+  --hero-orb-chart: rgba(204, 102, 34, 0.12);
 
-  --shine-base: #FFFFFF;
-  --shine-accent: #94a3b8;
-}
+  --shine-base: #FF8C42;
+  --shine-accent: #E67A2E;
 
-@layer base {
-  :root {
-    --shine-base: #18181B;
-    /* Dark Text for Light Mode */
-    --shine-accent: #334155;
-    /* Darker Shine for Light Mode */
-  }
+  --sidebar: #070708;
+  --sidebar-foreground: #EDE8E2;
+  --sidebar-primary: #FF8C42;
+  --sidebar-primary-foreground: #070708;
+  --sidebar-accent: #1A1A1C;
+  --sidebar-accent-foreground: #EDE8E2;
+  --sidebar-border: #2C2A28;
+  --sidebar-ring: #FF8C42;
 }
 
 @layer base {
@@ -356,18 +348,18 @@ h6 {
   -webkit-text-fill-color: transparent;
 }
 
-/* Dark mode specific text glow */
+/* Dark mode — cinematic text glow */
 .dark .heading-2 {
-  text-shadow: 0 0 60px rgba(251, 146, 60, 0.2);
+  text-shadow: 0 0 80px rgba(255, 140, 66, 0.15), 0 0 30px rgba(255, 140, 66, 0.08);
 }
 
 .dark .heading-3 {
-  text-shadow: 0 0 20px rgba(250, 250, 250, 0.08);
+  text-shadow: 0 0 30px rgba(237, 232, 226, 0.05);
 }
 
-/* Light mode - subtle shadow for depth */
+/* Light mode — refined depth */
 :root .heading-2 {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 /* ========================================
@@ -381,15 +373,15 @@ h6 {
 }
 
 .dark .glass-card {
-  background: rgba(24, 24, 27, 0.75);
-  border: 1px solid rgba(39, 39, 42, 0.8);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
 :root .glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(228, 228, 231, 0.9);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
 /* Premium card with hover */
@@ -413,11 +405,32 @@ h6 {
   outline-color: var(--ring);
 }
 
-/* Smooth theme transitions */
+/* Smooth theme transitions — longer for dramatic effect */
 *,
 *::before,
 *::after {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Dramatic theme crossfade for body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--background);
+  transition: background 0.5s ease;
+}
+
+/* Theme flip reveal animation */
+@keyframes theme-flip {
+  0% { opacity: 0; scale: 0.96; filter: blur(4px); }
+  100% { opacity: 1; scale: 1; filter: blur(0); }
+}
+
+.theme-flipping main,
+.theme-flipping #__next {
+  animation: theme-flip 0.4s ease-out;
 }
 
 /* Hero glow effect */
@@ -584,8 +597,8 @@ button:active,
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(251, 146, 60, 0.25) 0%,
-      rgba(251, 146, 60, 0.08) 40%,
+      color-mix(in srgb, var(--primary) 25%, transparent) 0%,
+      color-mix(in srgb, var(--primary) 8%, transparent) 40%,
       transparent 65%);
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -598,12 +611,8 @@ button:active,
 
 .interesse-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--card-hover-shadow);
   border-color: var(--primary);
-}
-
-.dark .interesse-card:hover {
-  box-shadow: 0 20px 60px rgba(251, 146, 60, 0.15);
 }
 
 /* ========================================
@@ -782,8 +791,8 @@ button:active,
   position: absolute;
   inset: 0;
   background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(251, 146, 60, 0.18) 0%,
-      rgba(251, 146, 60, 0.05) 40%,
+      color-mix(in srgb, var(--primary) 18%, transparent) 0%,
+      color-mix(in srgb, var(--primary) 5%, transparent) 40%,
       transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
